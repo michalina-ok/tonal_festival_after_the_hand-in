@@ -10,7 +10,7 @@ import {
 
 import ErrorPage from "./error-page";
 import Tickets2 from "./routes/tickets/Tickets2";
-import Tickets1 from "./routes/tickets/Tickets2";
+import Tickets1 from "./routes/tickets/Tickets1";
 
 
 const router = createBrowserRouter([
