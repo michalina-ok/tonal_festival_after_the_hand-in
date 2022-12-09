@@ -7,6 +7,7 @@ export default function Hero() {
       <>
       <div>
         <h1>Tonal Festival</h1>
+        <button>Get the app</button>
       </div>
 
       </>

@@ -1,8 +1,5 @@
 import React from 'react'
 
-
-
-
 function LineUp(props) {
   const limit = 7;
   return (
