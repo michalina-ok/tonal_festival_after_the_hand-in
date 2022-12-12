@@ -34,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path: "arena-details/",
-    element: <ArenaDetails addToCart={addToCart} />,
+    element: <ArenaDetails />,
   },
   {
     path: "app/",

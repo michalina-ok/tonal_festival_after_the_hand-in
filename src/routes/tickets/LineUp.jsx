@@ -6,7 +6,7 @@ function LineUp(props) {
     <div>
         <h2>Lineup bby</h2>
         {props.bands.slice(0, limit).map((band) => (
-    <p>{band.name}</p>
+    <p key={band.name}>{band.name}</p>
           ))}
     </div>
   )

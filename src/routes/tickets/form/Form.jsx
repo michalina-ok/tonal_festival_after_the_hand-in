@@ -2,23 +2,42 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { insertOrder } from "../../../modules/db";
-import Product from "./Product";
+import Product from "./Ticket";
 import Basket from "./Basket";
 import TicketsDetails from "./TicketsDetails";
 import AreaDetails from "./AreaDetails";
-import Checkout from "./Checkout";
 import Success from "./Success";
 import VisitorsDetails from "./VisitorsDetails";
-import data from '../../../data'
+import ticketsData from '../../../ticketsData'
+import tentsData from '../../../tentsData'
+import Payment from "./Payment";
+import Review from "./Review";
 
 function Form(props) {
+  // USE STATES
   const [cart, setCart] = useState([]);
-  const [order, setOrder] = useState([]);
   const [areas, setAreas] = useState([]);
-  const [ticketNumbers, setTicketNumbers] = useState(0)
+  const [ticketNumbers, setTicketNumbers] = useState(0);
+  const [order, setOrder] = useState({
+    chosenArea: "",
+    visitorsNames: [],
+    tickets: {
+      type: "",
+      amount: "",
+    },
+    tents: {
+      type: "",
+      amount: ""
+    },
+    basket: props.basket,
+  });
+
+  const { tents } = tentsData;
+  const { tickets } = ticketsData;
+  
 
 
-  const {products } = data;
+  //FETCHING
 
   useEffect(() => {
     async function getData() {
@@ -30,13 +49,14 @@ function Form(props) {
   }, []);
 
   function addToCart(data) {
-    if (data.prod === "ticket") {
-      setTicketNumbers((oldTicketNumbers) => oldTicketNumbers + 1)
+    if (data.product=== "ticket" ) {
+      console.log(data)
+      setTicketNumbers((oldTicketNumbers) => oldTicketNumbers + 1);
     }
-    if (cart.find((entry) => entry.type === data.type))  {
+    if (cart.find((entry) => entry.id === data.id)) {
       setCart((oldCart) =>
         oldCart.map((entry) => {
-          if (entry.type !== data.type) {
+          if (entry.id !== data.id) {
             return entry;
           }
           const copy = { ...entry };
@@ -45,39 +65,34 @@ function Form(props) {
         })
       );
     } else {
-      setCart((oldCart) => oldCart.concat({ ...data, amount: 1 }));
+      setCart((oldCart) => oldCart.concat({ ...data }));
     }
   }
 
-  const handleQuantityDecrease = (index) => {
-    const newItems = [...items];
-  
-    newItems[index].quantity--;
-  
-    setItems(newItems);
-  };
-
-
-  function addToOrder(data) {
-      setOrder((oldOrder) => oldOrder.concat({...data}));
- 
-    //order.push(data);
-    console.log('object:', data)
-    console.log('curent order:', order)
-    
-   
+  function countTheTickets() {
+    if (data.id === 1 || 2) {
+      setTicketNumbers((oldTicketNumbers) => oldTicketNumbers + 1);
+    }
   }
 
-  
+  // const handleQuantityDecrease = (index) => {
+  //   const newItems = [...items];
+
+  //   newItems[index].quantity--;
+
+  //   setItems(newItems);
+  // };
+
+  console.log(order);
 
   return (
     <div>
-    
-      <TicketsDetails addToOrder={addToOrder} addToCart={addToCart} products={products} setTicketNumbers={setTicketNumbers} />
+      <TicketsDetails setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} />
       <Basket cart={cart} />
-      <AreaDetails areas={areas} addToOrder={addToOrder} addToCart={addToCart}/>
-      <VisitorsDetails addToOrder={addToOrder} ticketNumbers={ticketNumbers} />
-      <Checkout />
+      <AreaDetails areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} />
+      <VisitorsDetails setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} />
+      <Review cart={cart} order={order} />
+      <Payment cart={cart} order={order}/>
       <Success />
     </div>
   );

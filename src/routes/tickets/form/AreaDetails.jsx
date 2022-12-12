@@ -5,10 +5,11 @@ import Area from "./Area";
 function AreaDetails(props) {
   return (
     <>
-      <h2>Choose your arena here</h2>
+      <h2>Where would you like to stay?</h2>
+      <p>We’ve prepared 4 unique areas for you to stay in. Click on a selected arena to find out more information.</p>
       <div>
         {props.areas.map((area) => (
-          <Area key={area.area} area={area} addToCart={props.addToCart} addToOrder={props.addToOrder} />
+          <Area key={area.area} order = {props.order} setOrder={props.setOrder} area={area} addToCart={props.addToCart} addToOrder={props.addToOrder} ticketNumbers={props.ticketNumbers}/>
         ))}
       </div>
       <button>Save</button>
