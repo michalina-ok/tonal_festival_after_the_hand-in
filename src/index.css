@@ -76,3 +76,11 @@ button:focus-visible {
 .Basket {
   text-align: right;
 }
+
+.available {
+  background-color: rgb(143, 160, 143);
+}
+
+.unavailable {
+  background-color: rgb(214, 88, 88);
+}

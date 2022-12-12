@@ -1,21 +1,33 @@
 import React from 'react'
+import AreaDetails from './AreaDetails';
 
 function Basket(props) {
-console.log(props.cart)
+ 
+function getTotal() {
+
+  let i = 0;
+  
 
 
+  let total = 0;
+  props.cart.forEach((item) => {
+    total += item.amount * item.price;
+  });
+
+  return total;
+ }
 
   return (
     <section className="Basket">
       <ul>
+        {props.cart.length === 0 && <div>Cart is empty</div>}
         {props.cart.map((item) => (
-          <li>
-            {item.type} x {item.amount}, {item.price},-
-           
+          <li key={item.id}>
+          {item.type} x {item.amount},-{item.price}
           </li>
         ))}
       </ul>
-      <h3>Total: </h3> 
+      <h3>Total: {getTotal()} </h3> 
     </section>
   );
 }

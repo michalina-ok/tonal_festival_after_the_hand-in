@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 
 import ErrorPage from "./error-page";
-import ArenaDetails from './routes/tickets/form/ArenaDetails'
+import ArenaDetails from './routes/tickets/form/AreaDetails'
 import Form from './routes/tickets/form/Form';
 import TicketsDetails from './routes/tickets/form/TicketsDetails';
 

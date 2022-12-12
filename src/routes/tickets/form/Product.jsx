@@ -1,18 +1,18 @@
 import React from "react";
 
 function Product(props) {
-  const regularTicket = [{ type: "regular", amount: 1, price: 799 }];
-  const vipTicket = [{ type: "vip", amount: 1, price: 799 }];
 
   function add() {
-    props.addToCart(regularTicket);
+    props.addToCart(props.product);
+    props.addToOrder(props.product)
   }
 
   return (
     <div>
       {" "}
       <article className="Product">
-        <h3>regular ticket</h3>
+        <h3>{props.product.type}</h3>
+        <h4>{props.product.price} DKK</h4>
         <button onClick={add}>Add to a basket</button>
       </article>
     </div>
