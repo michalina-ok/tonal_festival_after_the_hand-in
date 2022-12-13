@@ -5,18 +5,7 @@ function Ticket(props) {
     // ADD TO CART
     props.addToCart(props.product);
     //props.addToOrder(props.product)
-
-    // ADD TO ORDER
-    props.setOrder({
-      ...props.order,
-      tickets: {
-        ...props.order.tickets,
-        type: props.product.type,
-        amount: props.product.amount,
-      },
-    });
   }
-
   return (
     <div>
       {" "}

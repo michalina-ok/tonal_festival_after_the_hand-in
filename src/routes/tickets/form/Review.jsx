@@ -15,12 +15,12 @@ function Review(props) {
       <h2>Please review your order</h2>
       {props.cart.map((item) => (
           <li key={item.id}>
-          {item.type} x {item.amount},-{item.price}
+          {item.name} {item.amount}x {item.price},-
           </li>
         ))}
-        <p>Chosen area: {props.order.chosenArea}</p>
+        <p>Chosen area: {props.order.area}</p>
         <p>Visitors:</p> 
-        {props.order.visitorsNames.map((item, index) => <p key={index}>{item}</p>) }
+        {props.order.visitors.map((item, index) => <p key={index}>{item}</p>) }
 
 
 

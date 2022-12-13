@@ -14,7 +14,7 @@ function VisitorsDetails(props) {
     const inputValues = [...theForm.current.querySelectorAll("input")].map((e) => e.value);
     props.setOrder({
       ...props.order,
-      visitorsNames: inputValues,
+      visitors: inputValues,
     });
   }
 let i = 0;
@@ -26,7 +26,7 @@ let i = 0;
       <p>The tickets are personal which means we need to know the name of each ticket holder. If you’d like to pass your ticket to someone else later on, please contact our customer service.</p>
       <form ref={theForm}>
         {[...Array(props.ticketNumbers)].map((index) => (
-          <InputField key={i++} number={i+1}/>
+          <InputField  cart={props.cart} key={i++} number={i+1}/>
         ))}
         <button onClick={add}>Continue</button>
       </form>

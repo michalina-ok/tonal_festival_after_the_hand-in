@@ -18,18 +18,15 @@ function Form(props) {
   const [cart, setCart] = useState([]);
   const [areas, setAreas] = useState([]);
   const [ticketNumbers, setTicketNumbers] = useState(0);
+  const [reservationID, setReservationID] = useState('')
   const [order, setOrder] = useState({
-    chosenArea: "",
-    visitorsNames: [],
-    tickets: {
-      type: "",
-      amount: "",
-    },
-    tents: {
-      type: "",
-      amount: ""
-    },
-    basket: props.basket,
+    area: "",
+    visitors: [],
+    name: '',
+    address: '',
+    email: '',
+    phone: '',
+    basket: cart,
   });
 
   const { tents } = tentsData;
@@ -50,7 +47,6 @@ function Form(props) {
 
   function addToCart(data) {
     if (data.product=== "ticket" ) {
-      console.log(data)
       setTicketNumbers((oldTicketNumbers) => oldTicketNumbers + 1);
     }
     if (cart.find((entry) => entry.id === data.id)) {
@@ -69,12 +65,6 @@ function Form(props) {
     }
   }
 
-  function countTheTickets() {
-    if (data.id === 1 || 2) {
-      setTicketNumbers((oldTicketNumbers) => oldTicketNumbers + 1);
-    }
-  }
-
   // const handleQuantityDecrease = (index) => {
   //   const newItems = [...items];
 
@@ -84,13 +74,14 @@ function Form(props) {
   // };
 
   console.log(order);
+  console.log(reservationID);
 
   return (
     <div>
       <TicketsDetails setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} />
-      <Basket cart={cart} />
-      <AreaDetails areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} />
-      <VisitorsDetails setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} />
+      <Basket cart={cart} setOrder={setOrder} order={order} />
+      <VisitorsDetails setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} />
+      <AreaDetails areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} />
       <Review cart={cart} order={order} />
       <Payment cart={cart} order={order}/>
       <Success />

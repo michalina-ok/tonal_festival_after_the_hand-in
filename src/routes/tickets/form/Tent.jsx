@@ -7,16 +7,6 @@ function Tent(props) {
     // ADD TO CART
     props.addToCart(props.product);
     //props.addToOrder(props.product)
-
-      // ADD TO ORDER
-    props.setOrder(
-      {
-      ...props.order,
-      tents: {
-        ...props.order.tents,
-        type: props.product.type,
-      },
-    });
   }
 
 
