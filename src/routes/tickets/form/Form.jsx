@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet, Routes, Route } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { insertOrder } from "../../../modules/db";
 import Product from "./Ticket";
@@ -8,31 +8,29 @@ import TicketsDetails from "./TicketsDetails";
 import AreaDetails from "./AreaDetails";
 import Success from "./Success";
 import VisitorsDetails from "./VisitorsDetails";
-import ticketsData from '../../../ticketsData'
-import tentsData from '../../../tentsData'
+import ticketsData from "../../../ticketsData";
+import tentsData from "../../../tentsData";
 import Payment from "./Payment";
 import Review from "./Review";
 
-function Form(props) {
+function Form() {
   // USE STATES
   const [cart, setCart] = useState([]);
   const [areas, setAreas] = useState([]);
   const [ticketNumbers, setTicketNumbers] = useState(0);
-  const [reservationID, setReservationID] = useState('')
+  const [reservationID, setReservationID] = useState("");
   const [order, setOrder] = useState({
     area: "",
     visitors: [],
-    name: '',
-    address: '',
-    email: '',
-    phone: '',
-    basket: cart,
+    name: "",
+    address: "",
+    email: "",
+    phone: "",
   });
+  const [page, setPage] = useState(1);
 
   const { tents } = tentsData;
   const { tickets } = ticketsData;
-  
-
 
   //FETCHING
 
@@ -46,7 +44,7 @@ function Form(props) {
   }, []);
 
   function addToCart(data) {
-    if (data.product=== "ticket" ) {
+    if (data.product === "ticket") {
       setTicketNumbers((oldTicketNumbers) => oldTicketNumbers + 1);
     }
     if (cart.find((entry) => entry.id === data.id)) {
@@ -78,13 +76,13 @@ function Form(props) {
 
   return (
     <div>
-      <TicketsDetails setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} />
-      <Basket cart={cart} setOrder={setOrder} order={order} />
-      <VisitorsDetails setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} />
-      <AreaDetails areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} />
-      <Review cart={cart} order={order} />
-      <Payment cart={cart} order={order}/>
-      <Success />
+      <h1>Tonal Festival</h1>
+      {page === 1 ? <TicketsDetails page={page} setPage={setPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} cart={cart} /> : ""}
+      {page === 2 ? <VisitorsDetails page={page} setPage={setPage} setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} /> : ""}
+      {page === 3 ? <AreaDetails page={page} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} /> : ""}
+      {page === 4 ? <Review page={page} setPage={setPage} cart={cart} order={order} /> : ""}
+      {page === 5 ? <Payment page={page} setPage={setPage} cart={cart} order={order} /> : ""}
+      {page === 6 ? <Success page={page} setPage={setPage} /> : ""}
     </div>
   );
 }

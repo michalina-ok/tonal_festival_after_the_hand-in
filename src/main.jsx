@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import './index.css'
+import './index.scss'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -9,11 +9,10 @@ import {
 } from "react-router-dom";
 
 import ErrorPage from "./error-page";
-import ArenaDetails from './routes/tickets/form/AreaDetails'
+import AreaDetails from './routes/tickets/form/AreaDetails'
 import Form from './routes/tickets/form/Form';
 import TicketsDetails from './routes/tickets/form/TicketsDetails';
-
-
+import Basket from './routes/tickets/form/Basket';
 
 
 
@@ -29,21 +28,26 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "form/",
+    path: "form/*",
     element: <Form />,
+    children: [
+      {
+        path: "tickets-details/",
+        element: <TicketsDetails />,
+      },
+    ],
   },
-  {
-    path: "arena-details/",
-    element: <ArenaDetails />,
-  },
+
   {
     path: "app/",
     element: <ErrorPage />,
   },
   {
-    path: "tickets-details/",
-    element: <TicketsDetails />,
+    path: "area-details/",
+    element: <AreaDetails />,
   },
+
+ 
 
  
 ]);

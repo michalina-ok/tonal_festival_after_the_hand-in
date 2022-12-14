@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Area(props) {
   function insertReservation(payload) {
@@ -15,14 +16,14 @@ function Area(props) {
   }
   function submit() {
     insertReservation({
-      area: props.area.area,
-      amount: 3,
+      "area": props.area.area,
+      "amount": props.ticketNumbers
     });
     console.log("put request went through");
   }
 
+
   function add() {
-  
     props.setOrder({
       ...props.order,
       area: props.area.area,
@@ -32,13 +33,15 @@ function Area(props) {
   return (
     <div>
       {props.area.available >= props.ticketNumbers && (
-        <div className="available" onClick="submit">
+        <div className="available">
           <h3>{props.area.area}</h3>
           <p>
             {" "}
             {props.area.available} spot available out of {props.area.spots}
           </p>
-          <button onClick={submit}>Choose this area</button>
+          <button onClick={add}>Choose this area</button>
+          <button onClick={submit}>ID</button>
+         
         </div>
       )}
       {props.area.available < props.ticketNumbers && (

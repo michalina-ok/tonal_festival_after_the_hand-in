@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 import LineUp from "./routes/tickets/LineUp";
 import TicketSection from "./routes/tickets/TicketSection";
 import Footer from "./routes/tickets/Footer";
-import './index.css'
+import './index.scss'
 
 
 function App(props) {

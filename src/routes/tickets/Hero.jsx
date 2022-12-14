@@ -5,9 +5,10 @@ export default function Hero() {
   
     return (
       <>
-      <div>
+      <div className="Hero">
+      <button>Get the app</button>
         <h1>Tonal Festival</h1>
-        <button>Get the app</button>
+        <div className="tickets">tickets ↓ tickets ↓ tickets ↓ tickets ↓ tickets ↓ tickets ↓ tickets ↓ tickets ↓ tickets ↓ tickets ↓ tickets ↓ tickets ↓ tickets</div>
       </div>
 
       </>

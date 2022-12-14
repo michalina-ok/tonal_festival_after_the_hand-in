@@ -27,7 +27,7 @@ function Review(props) {
 
       <p>YOUR TOTAL: {getTotal()} </p>
 
-      <button>Looks good, let's pay!</button>
+      <button onClick={() => props.setPage(oldPage => oldPage + 1)}>Looks good, let's pay!</button>
     </div>
   );
 }

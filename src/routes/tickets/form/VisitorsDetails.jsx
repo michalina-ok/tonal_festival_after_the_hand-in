@@ -9,16 +9,27 @@ function VisitorsDetails(props) {
   //     data[index][event.target.name] = event.target.value;
   // }
 
-  function add(e) {
+  function handleClick(e) {
     e.preventDefault();
     const inputValues = [...theForm.current.querySelectorAll("input")].map((e) => e.value);
     props.setOrder({
       ...props.order,
       visitors: inputValues,
     });
+    changePage()
+    console.log(props.page)
+
+  }
+
+  function changePage(){
+    props.setPage(oldPage => oldPage + 1)
   }
 let i = 0;
   const theForm = useRef(null);
+
+  function goBack() {
+    props.setPage(oldPage => oldPage - 1)
+  }
 
   return (
     <div>
@@ -28,7 +39,8 @@ let i = 0;
         {[...Array(props.ticketNumbers)].map((index) => (
           <InputField  cart={props.cart} key={i++} number={i+1}/>
         ))}
-        <button onClick={add}>Continue</button>
+        <button onClick={goBack}>Go back</button>
+        <button onClick={handleClick}>Continue</button>
       </form>
     </div>
   );

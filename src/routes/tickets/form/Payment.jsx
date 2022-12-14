@@ -9,6 +9,7 @@ function Payment(props) {
     e.preventDefault();
     insertOrder(
       props.order,
+      {basket: props.cart}
   );
   }
   return (
@@ -47,7 +48,7 @@ function Payment(props) {
           <input type="type" name="cvv" id="form-cvv"></input>
         </div>
 
-        <button>Pay</button>
+        <button onClick={() => props.setPage(oldPage => oldPage + 1)}>Pay</button>
       </form>
     </div>
   );

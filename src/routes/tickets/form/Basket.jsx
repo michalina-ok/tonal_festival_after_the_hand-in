@@ -2,7 +2,7 @@ import React from "react";
 
 function Basket(props) {
   function getTotal() {
-
+    
     let total = 0;
     props.cart.forEach((item) => {
       total += item.amount * item.price;

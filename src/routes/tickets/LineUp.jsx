@@ -3,8 +3,7 @@ import React from 'react'
 function LineUp(props) {
   const limit = 7;
   return (
-    <div>
-        <h2>Lineup bby</h2>
+    <div className="LineUp">
         {props.bands.slice(0, limit).map((band) => (
     <p key={band.name}>{band.name}</p>
           ))}
