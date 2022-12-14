@@ -14,20 +14,20 @@ function Review(props) {
     <div>
       <h2>Please review your order</h2>
       {props.cart.map((item) => (
-          <li key={item.id}>
+        <li key={item.id}>
           {item.name} {item.amount}x {item.price},-
-          </li>
-        ))}
-        <p>Chosen area: {props.order.area}</p>
-        <p>Visitors:</p> 
-        {props.order.visitors.map((item, index) => <p key={index}>{item}</p>) }
-
-
-
+        </li>
+      ))}
+      <p>Chosen area: {props.order.area}</p>
+      <p>Visitors:</p>
+      {props.order.visitors.map((item, index) => (
+        <p key={index}>{item}</p>
+      ))}
 
       <p>YOUR TOTAL: {getTotal()} </p>
 
-      <button onClick={() => props.setPage(oldPage => oldPage + 1)}>Looks good, let's pay!</button>
+      <button onClick={props.nextPage}>Looks good, let's pay!</button>
+     
     </div>
   );
 }

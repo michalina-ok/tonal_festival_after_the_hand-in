@@ -26,7 +26,6 @@ $white-colour: #f9faf7;
   padding: 0;
 }
 
-
 body {
   margin: 0;
   display: flex;
@@ -45,11 +44,17 @@ h3 {
   font-weight: 400;
 }
 
+
+h2 {
+  font-size: 2.44rem;
+  margin: 20px 0;
+}
+
 p {
   font-family: $font-body;
 }
 
-button {
+button.round {
   background-color: $black-colour;
   color: $white-colour;
   border-radius: 62px;
@@ -57,7 +62,6 @@ button {
   border: none;
   max-inline-size: 120px;
   padding: 0.64rem;
-  text-transform: uppercase;
   font-weight: 300;
   display: flex;
   justify-content: center;
@@ -66,6 +70,7 @@ button {
   text-decoration: none;
   cursor: pointer;
   width: 90px;
+  transition: 0.2s;
 }
 
 button:hover {
@@ -78,8 +83,6 @@ button:hover {
 //   color: $black-colour;
 // }
 
-
-
 //LANDING PAGE
 .Hero {
   height: 100vh;
@@ -89,7 +92,6 @@ button:hover {
     left: 10vw;
     bottom: 50vh;
     text-transform: uppercase;
-
   }
   button {
     position: absolute;
@@ -106,8 +108,23 @@ button:hover {
     border-top: 3px $white-colour solid;
     border-bottom: 3px $white-colour solid;
     white-space: nowrap;
+  }
+  div.line {
+    width: 85%;
+    height: 2px;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(188, 226, 6, 0.6));
+    //background-image: linear-gradient(to bottom, #000000, #bce206);
+  }
 
-}
+  div.line-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+    margin: 5px 0;
+  }
+
+
 }
 .TicketSection {
   display: flex;
@@ -118,6 +135,7 @@ button:hover {
   div.tickets-info {
     background-color: $white-colour;
     color: $black-colour;
+    width: 80%;
   }
   button {
     align-self: center;
@@ -126,8 +144,57 @@ button:hover {
 
 .LineUp {
   p {
-    font-size: 3em;
+    font-size: 3.05em;
     text-transform: uppercase;
+  }
+}
+
+
+//FORM
+
+.Form {
+  h1 {
+    font-size: 3.81rem;
+      background: linear-gradient( rgba(188, 226, 6, 0.6),rgba(0, 0, 0, 0.2));
+      width: 100vw;
+      padding: 20px 0 40px 0;
+    
+  }
+}
+
+.Basket {
+  background-color: $white-colour;
+  color: $black-colour;
+  border-radius: 5px;
+  box-shadow: 0 0 12px 4px $white-colour;
+  margin: 20px;
+  font-size: 1.44rem;
+}
+
+.TicketsDetails {
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px;
+  div.ticket-item {
+    display: flex;
+    gap: 20px;
+    border: 1px $white-colour solid;
+    padding: 10px;
+  }
+  button.plus-minus {
+    background-color: $white-colour;
+    color: $black-colour;
+    border: 1px $white-colour solid;
+    max-inline-size: 120px;
+    padding: 0.64rem;
+    font-weight: 300;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    font-family: $font-body;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
   }
 }
 
@@ -145,7 +212,7 @@ button:hover {
 }
 
 .available {
-  background-color:rgb(143, 160, 143);
+  background-color: rgb(143, 160, 143);
 }
 
 .unavailable {

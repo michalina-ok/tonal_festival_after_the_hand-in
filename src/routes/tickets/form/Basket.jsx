@@ -2,12 +2,11 @@ import React from "react";
 
 function Basket(props) {
   function getTotal() {
-    
     let total = 0;
     props.cart.forEach((item) => {
       total += item.amount * item.price;
     });
-    
+    console.log(props.cart)
 
     return total;
   }
@@ -18,11 +17,11 @@ function Basket(props) {
         {props.cart.length === 0 && <div>Cart is empty</div>}
         {props.cart.map((item) => (
           <li key={item.id}>
-            {item.name} x {item.amount},-{item.price}
+        <p>{item.amount} {item.name} x {item.price},-</p>
           </li>
         ))}
       </ul>
-      <h3>Total: {getTotal()} </h3>
+      <p>Total: {getTotal()} DKK </p>
     </section>
   );
 }

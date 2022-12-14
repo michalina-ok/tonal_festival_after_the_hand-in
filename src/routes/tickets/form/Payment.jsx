@@ -3,14 +3,13 @@ import { useRef } from "react";
 import { insertOrder } from "../../../modules/db";
 
 function Payment(props) {
-  console.log(props.order)
-  
+  const payload = { ...props.order, basket: props.cart };
+
   function submit(e) {
     e.preventDefault();
-    insertOrder(
-      props.order,
-      {basket: props.cart}
-  );
+    insertOrder(payload);
+
+    props.setPage((oldPage) => oldPage + 1);
   }
   return (
     <div>
@@ -48,7 +47,7 @@ function Payment(props) {
           <input type="type" name="cvv" id="form-cvv"></input>
         </div>
 
-        <button onClick={() => props.setPage(oldPage => oldPage + 1)}>Pay</button>
+        <button>Pay</button>
       </form>
     </div>
   );

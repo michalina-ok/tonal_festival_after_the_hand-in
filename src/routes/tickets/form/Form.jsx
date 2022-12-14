@@ -2,8 +2,6 @@ import React from "react";
 import { Link, Outlet, Routes, Route } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { insertOrder } from "../../../modules/db";
-import Product from "./Ticket";
-import Basket from "./Basket";
 import TicketsDetails from "./TicketsDetails";
 import AreaDetails from "./AreaDetails";
 import Success from "./Success";
@@ -63,6 +61,13 @@ function Form() {
     }
   }
 
+  function prevPage() {
+    setPage((oldPage) => oldPage - 1);
+  }
+  function nextPage() {
+    setPage((oldPage) => oldPage + 1);
+  }
+
   // const handleQuantityDecrease = (index) => {
   //   const newItems = [...items];
 
@@ -71,18 +76,22 @@ function Form() {
   //   setItems(newItems);
   // };
 
-  console.log(order);
-  console.log(reservationID);
+  // console.log(order);
+  // console.log(reservationID);
 
   return (
-    <div>
+    <div className="Form">
       <h1>Tonal Festival</h1>
-      {page === 1 ? <TicketsDetails page={page} setPage={setPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} cart={cart} /> : ""}
-      {page === 2 ? <VisitorsDetails page={page} setPage={setPage} setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} /> : ""}
-      {page === 3 ? <AreaDetails page={page} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} /> : ""}
-      {page === 4 ? <Review page={page} setPage={setPage} cart={cart} order={order} /> : ""}
-      {page === 5 ? <Payment page={page} setPage={setPage} cart={cart} order={order} /> : ""}
-      {page === 6 ? <Success page={page} setPage={setPage} /> : ""}
+      {page === 1 ? <TicketsDetails nextPage={nextPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} cart={cart} /> : ""}
+      {page === 2 ? <VisitorsDetails prevPage={prevPage} nextPage={nextPage} setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} /> : ""}
+      {page === 3 ? (
+        <AreaDetails prevPage={prevPage} nextPage={nextPage} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} />
+      ) : (
+        ""
+      )}
+      {page === 4 ? <Review prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} /> : ""}
+      {page === 5 ? <Payment prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} /> : ""}
+      {page === 6 ? <Success /> : ""}
     </div>
   );
 }
