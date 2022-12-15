@@ -8,6 +8,7 @@ import Footer from "./routes/tickets/Footer";
 import './index.scss'
 
 
+
 function App(props) {
 
   const [bands, setBands] = useState([]);
@@ -24,10 +25,12 @@ function App(props) {
 
   return (
     <div className="App">
+
       <Hero />
       <TicketSection />
       <LineUp bands={bands} />
       <Footer />
+ 
     </div>
   );
 }

@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import Ticket from "./Ticket";
 import Basket from "./Basket";
 import Tent from "./Tent";
+import Alert from "./Alert";
+
+
 
 function TicketsDetails(props) {
   const [isChecked, setIsChecked] = useState(false);
+  const [disable, setDisable] = useState(true);
+  const [isAlert, setIsAlert] = useState(false);
+
 
 
   const handleChange = () => {
@@ -12,6 +18,18 @@ function TicketsDetails(props) {
     isChecked ? props.removeFromCart(greenCamping) : props.addToCart(greenCamping);
     setIsChecked(!isChecked);
   };
+
+  const handleClick = () => {
+    console.log(props.cart.length)
+    {props.cart.find(({product}) => product === "ticket") ?  props.nextPage()  : handleAlert() }
+    
+  }
+
+  function handleAlert() {
+    setIsAlert(true);
+    console.log(isAlert)
+
+  }
 
 
   return (
@@ -29,9 +47,12 @@ function TicketsDetails(props) {
       <input type="checkbox" id="form-green-camping" name="green-camping" onChange={handleChange}></input>
 
       <Basket cart={props.cart} setOrder={props.setOrder} order={props.order} />
-      <button className="round" onClick={props.nextPage}>
+      {isAlert ? <Alert message={"Please add tickets"} /> : null}
+      <button className="round" onClick={handleClick}>
         Continue
       </button>
+ 
+
     </div>
   );
 }

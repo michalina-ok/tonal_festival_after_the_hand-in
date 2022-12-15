@@ -6,7 +6,8 @@ function InputField(props) {
       <h3>Guest {props.number}</h3>
 
       <label htmlFor="form-name">Full name</label>
-      <input type="type" name="name" id="form-name"></input>
+      <input required type="type" name="name" id="form-name"></input>
+   
     </div>
   );
 }

@@ -104,7 +104,7 @@ function Form() {
         ""
       )}
       {page === 4 ? <Review prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} /> : ""}
-      {page === 5 ? <Payment prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} /> : ""}
+      {page === 5 ? <Payment reservationID={reservationID} prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} /> : ""}
       {page === 6 ? <Success /> : ""}
     </div>
   );

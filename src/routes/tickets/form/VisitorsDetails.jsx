@@ -11,6 +11,12 @@ function VisitorsDetails(props) {
 
   function handleClick(e) {
     e.preventDefault();
+
+
+  }
+
+  function submit(e) {
+    e.preventDefault();
     const inputValues = [...theForm.current.querySelectorAll("input")].map((e) => e.value);
     props.setOrder({
       ...props.order,
@@ -26,17 +32,17 @@ function VisitorsDetails(props) {
     <div>
       <h2>Who's partying with us?</h2>
       <p>The tickets are personal which means we need to know the name of each ticket holder. If you’d like to pass your ticket to someone else later on, please contact our customer service.</p>
-      <div ref={theForm}>
+      <form onSubmit={submit} ref={theForm}>
         {[...Array(props.ticketNumbers)].map((index) => (
           <InputField cart={props.cart} key={i++} number={i + 1} />
         ))}
         <button className="round" onClick={props.prevPage}>
           Go back
         </button>
-        <button className="round" onClick={handleClick}>
+        <button className="round">
           Continue
         </button>
-      </div>
+      </form>
     </div>
   );
 }

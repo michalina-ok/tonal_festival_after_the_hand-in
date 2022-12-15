@@ -5,12 +5,17 @@ import { useState, useRef, useEffect } from "react";
 
 function AreaDetails(props) {
   const [reservation, setReservation] = useState({})
+  const [isAlert, setIsAlert] = useState(false)
 
 
   function handleClick() {
-    props.nextPage();
 
-    insertReservation(reservation)
+    insertReservation(reservation);
+    props.order.area.length ?  props.nextPage()  : handleAlert();
+  }
+
+  function handleAlert() {
+    setIsAlert(true);
   }
 
   function insertReservation(payload) {

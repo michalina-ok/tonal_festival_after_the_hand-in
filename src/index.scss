@@ -204,6 +204,13 @@ button:hover {
   
 }
 
+.Alert {
+  background-color: red;
+  padding: 10px;
+  margin: 10px;
+  border-radius:5px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
