@@ -13,7 +13,7 @@ import Review from "./Review";
 
 function Form() {
   // USE STATES
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([{ id: "6", name: "Booking fee", type: "extra", amount: 1, price: 99 }]);
   const [areas, setAreas] = useState([]);
   const [ticketNumbers, setTicketNumbers] = useState(0);
   const [reservationID, setReservationID] = useState("");
@@ -26,6 +26,8 @@ function Form() {
     phone: "",
   });
   const [page, setPage] = useState(1);
+  const [timer, setTimer] = useState('00:00');
+   const Ref = useRef(null);
 
   const { tents } = tentsData;
   const { tickets } = ticketsData;
@@ -61,6 +63,22 @@ function Form() {
     }
   }
 
+  function removeFromCart(data) {
+    if (data.product === "ticket") {
+      setTicketNumbers((oldTicketNumbers) => oldTicketNumbers - 1);
+  }
+  setCart((oldCart) => {
+    const subtracted = oldCart.map((item) => {
+      if (item.id===data.id) {
+        return {...item, amount: item.amount - 1}
+      }
+      return item;
+    });
+    const filtered = subtracted.filter(item => item.amount > 0)
+    return filtered
+  })
+}
+
   function prevPage() {
     setPage((oldPage) => oldPage - 1);
   }
@@ -68,21 +86,17 @@ function Form() {
     setPage((oldPage) => oldPage + 1);
   }
 
-  // const handleQuantityDecrease = (index) => {
-  //   const newItems = [...items];
 
-  //   newItems[index].quantity--;
 
-  //   setItems(newItems);
-  // };
 
+     
   // console.log(order);
   // console.log(reservationID);
 
   return (
     <div className="Form">
       <h1>Tonal Festival</h1>
-      {page === 1 ? <TicketsDetails nextPage={nextPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} cart={cart} /> : ""}
+      {page === 1 ? <TicketsDetails removeFromCart={removeFromCart} nextPage={nextPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} cart={cart} /> : ""}
       {page === 2 ? <VisitorsDetails prevPage={prevPage} nextPage={nextPage} setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} /> : ""}
       {page === 3 ? (
         <AreaDetails prevPage={prevPage} nextPage={nextPage} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} />

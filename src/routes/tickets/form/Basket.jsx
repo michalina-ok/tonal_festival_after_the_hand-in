@@ -13,11 +13,13 @@ function Basket(props) {
 
   return (
     <section className="Basket">
+     
       <ul>
         {props.cart.length === 0 && <div>Cart is empty</div>}
         {props.cart.map((item) => (
           <li key={item.id}>
-        <p>{item.amount} {item.name} x {item.price},-</p>
+        {item.type === "extra" && <p>{item.name} x {item.price},-</p>}
+        {item.type != "extra" && <p>{item.amount} {item.name} x {item.price},-</p>}
           </li>
         ))}
       </ul>

@@ -197,6 +197,12 @@ button:hover {
     transition: 0.2s;
   }
 }
+.AreaDetails {
+  h3{
+    color: $green-colour;
+  }
+  
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -211,10 +217,10 @@ button:hover {
   // }
 }
 
-.available {
-  background-color: rgb(143, 160, 143);
-}
+
 
 .unavailable {
-  background-color: rgb(214, 88, 88);
+  background-color: red;
 }
+
+

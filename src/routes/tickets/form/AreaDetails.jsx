@@ -1,8 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Area from "./Area";
+import { useState, useRef, useEffect } from "react";
 
 function AreaDetails(props) {
+  const [reservation, setReservation] = useState({})
+
+
+  function handleClick() {
+    props.nextPage();
+
+    insertReservation(reservation)
+  }
+
+  function insertReservation(payload) {
+    fetch("http://localhost:8080/reserve-spot/", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((response) => props.setReservationID(response.id))
+      .catch((err) => console.error(err));
+  }
+
+  function getReservationData(payload) {
+  
+    setReservation(payload)
+  }
+
+
+
+ 
   return (
     <div className="AreaDetails">
       <h2>Where would you like to stay?</h2>
@@ -19,11 +50,16 @@ function AreaDetails(props) {
             ticketNumbers={props.ticketNumbers}
             reservationID={props.reservationID}
             setReservationID={props.setReservationID}
+            insertReservation={insertReservation}
+            getReservationData={getReservationData}
+            setReservation={setReservation}
+          
+        
           />
         ))}
       </div>
       <button className="round" onClick={props.prevPage}>Go back</button>
-      <button className="round" onClick={props.nextPage}>Continue</button>
+      <button className="round" onClick={handleClick}>Continue</button>
     </div>
   );
 }

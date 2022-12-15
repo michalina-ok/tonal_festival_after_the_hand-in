@@ -8,8 +8,7 @@ function Payment(props) {
   function submit(e) {
     e.preventDefault();
     insertOrder(payload);
-
-    props.setPage((oldPage) => oldPage + 1);
+    props.nextPage((oldPage) => oldPage + 1);
   }
   return (
     <div>
