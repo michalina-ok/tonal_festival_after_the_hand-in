@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Area from "./Area";
 import { useState, useRef, useEffect } from "react";
+import Alert from "./Alert";
+
 
 function AreaDetails(props) {
   const [reservation, setReservation] = useState({})
@@ -10,7 +12,7 @@ function AreaDetails(props) {
 
   function handleClick() {
 
-    insertReservation(reservation);
+    //insertReservation(reservation);
     props.order.area.length ?  props.nextPage()  : handleAlert();
   }
 
@@ -64,6 +66,7 @@ function AreaDetails(props) {
         ))}
       </div>
       <button className="round" onClick={props.prevPage}>Go back</button>
+      {isAlert && <Alert message={"Please choose an area"}/> }
       <button className="round" onClick={handleClick}>Continue</button>
     </div>
   );

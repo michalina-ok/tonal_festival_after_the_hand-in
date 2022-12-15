@@ -19,7 +19,8 @@ function Basket(props) {
         {props.cart.map((item) => (
           <li key={item.id}>
         {item.type === "extra" && <p>{item.name} x {item.price},-</p>}
-        {item.type != "extra" && <p>{item.amount} {item.name} x {item.price},-</p>}
+        {item.type != "extra" && item.product != "ticket" && <p>{item.amount} {item.name} x {item.price},-</p>}
+        {item.type != "extra" && item.product === "ticket" && <p>{item.amount} {item.name}(s) x {item.price},-</p>}
           </li>
         ))}
       </ul>

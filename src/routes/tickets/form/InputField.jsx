@@ -7,6 +7,7 @@ function InputField(props) {
 
       <label htmlFor="form-name">Full name</label>
       <input required type="type" name="name" id="form-name"></input>
+      
    
     </div>
   );

@@ -1,5 +1,6 @@
 export function insertReservation(payload) {
-        fetch("http://localhost:8080/reserve-spot/", {
+  const url="http://localhost:8080";
+        fetch(url + "/reserve-spot/", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -8,8 +8,8 @@ function Payment(props) {
 
   function submit(e) {
     e.preventDefault();
-    insertOrder(payload);
-    sendID({"id": props.reservationID});
+    //insertOrder(payload);
+    //sendID({"id": props.reservationID});
 
     props.nextPage((oldPage) => oldPage + 1);
   }

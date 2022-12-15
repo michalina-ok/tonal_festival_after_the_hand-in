@@ -28,9 +28,12 @@ function Form() {
   const [page, setPage] = useState(1);
   const [timer, setTimer] = useState('00:00');
    const Ref = useRef(null);
+  const [placesInTents, setPlacesInTents] = useState(0);
 
   const { tents } = tentsData;
   const { tickets } = ticketsData;
+
+
 
   //FETCHING
 
@@ -46,7 +49,10 @@ function Form() {
   function addToCart(data) {
     if (data.product === "ticket") {
       setTicketNumbers((oldTicketNumbers) => oldTicketNumbers + 1);
-    }
+    };
+    if (data.product === "tent" && data.for) {
+      setPlacesInTents((old) => old + data.for);
+    };
     if (cart.find((entry) => entry.id === data.id)) {
       setCart((oldCart) =>
         oldCart.map((entry) => {
@@ -66,6 +72,9 @@ function Form() {
   function removeFromCart(data) {
     if (data.product === "ticket") {
       setTicketNumbers((oldTicketNumbers) => oldTicketNumbers - 1);
+  };
+  if (data.product === "tent" && data.for) {
+    setPlacesInTents((old) => old - data.for);
   }
   setCart((oldCart) => {
     const subtracted = oldCart.map((item) => {
@@ -82,7 +91,7 @@ function Form() {
   function prevPage() {
     setPage((oldPage) => oldPage - 1);
   }
-  function nextPage() {
+  function nextPage(e) {
     setPage((oldPage) => oldPage + 1);
   }
 
@@ -96,7 +105,7 @@ function Form() {
   return (
     <div className="Form">
       <h1>Tonal Festival</h1>
-      {page === 1 ? <TicketsDetails removeFromCart={removeFromCart} nextPage={nextPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} cart={cart} /> : ""}
+      {page === 1 ? <TicketsDetails placesInTents={placesInTents} removeFromCart={removeFromCart} nextPage={nextPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} ticketNumbers={ticketNumbers} cart={cart} /> : ""}
       {page === 2 ? <VisitorsDetails prevPage={prevPage} nextPage={nextPage} setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} /> : ""}
       {page === 3 ? (
         <AreaDetails prevPage={prevPage} nextPage={nextPage} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} />

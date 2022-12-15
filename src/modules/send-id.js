@@ -1,5 +1,6 @@
 export async function sendID(payload) {
-        const res = await fetch("http://localhost:8080/fullfill-reservation", {
+  const url="http://localhost:8080"      
+  const res = await fetch(url + "/fullfill-reservation", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

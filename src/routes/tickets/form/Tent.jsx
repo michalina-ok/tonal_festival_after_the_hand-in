@@ -12,7 +12,7 @@ function Tent(props) {
   return (
     <div>
       {" "}
-      <article className="Tent">
+      <article className="Product">
       <div className="ticket-item">
         <p>{props.product.name}</p> 
         <p>{props.product.price} DKK</p>

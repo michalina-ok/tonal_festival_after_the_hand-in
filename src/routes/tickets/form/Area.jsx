@@ -23,24 +23,32 @@ function Area(props) {
   }
 
   return (
-    <div>
+    <div className="areas-container">
       {props.area.available >= props.ticketNumbers && (
-        <div className="available">
+      <div className="available-area">
+     
+        
+          <div>
           <h3>{props.area.area}</h3>
           <p>
             {" "}
             {props.area.available} spot available out of {props.area.spots}
           </p>
+          </div>
           <button className="round" onClick={add}>
             Choose this area
           </button>
+     
         </div>
       )}
       {props.area.available < props.ticketNumbers && (
-        <div className="unavailable">
-          <h2>{props.area.area}</h2>
+         <div className="unavailable-area">
+     
+         
+          <h3>{props.area.area}</h3>
           <p>Sold out</p>
         </div>
+ 
       )}
     </div>
   );

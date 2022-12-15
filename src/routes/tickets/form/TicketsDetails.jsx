@@ -7,10 +7,15 @@ import Alert from "./Alert";
 
 
 function TicketsDetails(props) {
+  const message1 = "1"
+const message2 = "1"
+
   const [isChecked, setIsChecked] = useState(false);
-  const [disable, setDisable] = useState(true);
+  const [alertMessage, setAlertMessage] = useState("");
   const [isAlert, setIsAlert] = useState(false);
 
+  const tentObjects = props.cart.filter(element => element.product === "tent");
+const people = tentObjects.forEach(item => item.amount * item.for);
 
 
   const handleChange = () => {
@@ -20,16 +25,22 @@ function TicketsDetails(props) {
   };
 
   const handleClick = () => {
-    console.log(props.cart.length)
-    {props.cart.find(({product}) => product === "ticket") ?  props.nextPage()  : handleAlert() }
-    
-  }
+    if (props.ticketNumbers === 0) {
+      setIsAlert(true);
+      setAlertMessage("Please add tickets")
+    } else if (props.placesInTents === 0 && props.ticketNumbers > 0) {
+      props.nextPage()
+    }else if (props.ticketNumbers != props.placesInTents) {
+      setIsAlert(true);
+      setAlertMessage("Your number of tent spaces does not match the number of guests")
+    } else {
+      props.nextPage()
+    }
 
-  function handleAlert() {
-    setIsAlert(true);
-    console.log(isAlert)
+}
 
-  }
+
+
 
 
   return (
@@ -47,7 +58,7 @@ function TicketsDetails(props) {
       <input type="checkbox" id="form-green-camping" name="green-camping" onChange={handleChange}></input>
 
       <Basket cart={props.cart} setOrder={props.setOrder} order={props.order} />
-      {isAlert ? <Alert message={"Please add tickets"} /> : null}
+      {isAlert  && <Alert message={alertMessage} />}
       <button className="round" onClick={handleClick}>
         Continue
       </button>
