@@ -40,6 +40,10 @@ function AreaDetails(props) {
 
 
 
+  
+
+let i=1;
+
  
   return (
     <div className="AreaDetails">
@@ -60,6 +64,8 @@ function AreaDetails(props) {
             insertReservation={insertReservation}
             getReservationData={getReservationData}
             setReservation={setReservation}
+            tabIndex={i++}
+           
           
         
           />
@@ -67,7 +73,7 @@ function AreaDetails(props) {
       </div>
       <button className="round" onClick={props.prevPage}>Go back</button>
       {isAlert && <Alert message={"Please choose an area"}/> }
-      <button className="round" onClick={handleClick}>Continue</button>
+      <button className="round" onClick={handleClick} >Continue</button>
     </div>
   );
 }

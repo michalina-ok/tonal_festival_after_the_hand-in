@@ -19,25 +19,33 @@ function Area(props) {
 
    props.getReservationData({area: props.area.area,
    amount: props.ticketNumbers})
-
   }
 
+  const onKeyDown = (event) => {
+    event.preventDefault();
+    if (event.key === 'Enter' || event.key === ' ') {
+      add();
+    }
+  }
+
+
+
   return (
+    <div>
+      <div className="main-stage"></div>
     <div className="areas-container">
       {props.area.available >= props.ticketNumbers && (
       <div className="available-area">
      
         
-          <div>
+          <div role="button" onClick={add} onKeyDown={onKeyDown} tabIndex={props.tabIndex}>
           <h3>{props.area.area}</h3>
           <p>
             {" "}
             {props.area.available} spot available out of {props.area.spots}
           </p>
           </div>
-          <button className="round" onClick={add}>
-            Choose this area
-          </button>
+        
      
         </div>
       )}
@@ -50,6 +58,7 @@ function Area(props) {
         </div>
  
       )}
+    </div>
     </div>
   );
 }

@@ -39,12 +39,13 @@ function Form() {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch("http://localhost:8080/available-spots/");
+      const url = "http://localhost:8080"
+      const res = await fetch(url + "/available-spots/");
       const data = await res.json();
       setAreas(data);
     }
     getData();
-  }, []);
+  }, [areas.available]);
 
   function addToCart(data) {
     if (data.product === "ticket") {
@@ -114,7 +115,7 @@ function Form() {
       )}
       {page === 4 ? <Review prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} /> : ""}
       {page === 5 ? <Payment reservationID={reservationID} prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} /> : ""}
-      {page === 6 ? <Success /> : ""}
+      {page === 6 && <Success />}
     </div>
   );
 }
