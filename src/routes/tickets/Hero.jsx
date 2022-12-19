@@ -6,8 +6,78 @@ export default function Hero() {
     return (
       <>
       <div className="Hero">
-      <button className="round">Get the app</button>
+      <a href="https://tonal-festival-app.netlify.app/" className="round">Get the app</a>
       <div className="main-line-container">
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
+      <div className="line-container">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      </div>
       <div className="line-container">
       <div className="line"></div>
       <div className="line"></div>

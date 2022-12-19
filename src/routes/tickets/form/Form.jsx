@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, Outlet, Routes, Route } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { insertOrder } from "../../../modules/db";
 import TicketsDetails from "./TicketsDetails";
@@ -10,7 +9,6 @@ import ticketsData from "../../../ticketsData";
 import tentsData from "../../../tentsData";
 import Payment from "./Payment";
 import Review from "./Review";
-import Timer from "./Timer";
 import Countdown from "react-countdown";
 
 function Form(props) {
@@ -24,7 +22,6 @@ function Form(props) {
     visitors: [],
   });
   const [page, setPage] = useState(1);
-  //const [timer, setTimer] = useState("00:00");
   const Ref = useRef(null);
   const [placesInTents, setPlacesInTents] = useState(0);
 

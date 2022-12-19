@@ -112,7 +112,7 @@ button:hover {
   div.line {
     width: 85%;
     height: 2px;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(188, 226, 6, 0.6));
+    background: linear-gradient(90deg, rgba(188, 226, 6, 0.5), rgba(188, 226, 6, 0.25));
     //background-image: linear-gradient(to bottom, #000000, #bce206);
   }
 
@@ -143,10 +143,12 @@ button:hover {
 }
 
 .LineUp {
+  height: 100vh;
   p {
     font-size: 3.05em;
     text-transform: uppercase;
   }
+
 }
 
 
