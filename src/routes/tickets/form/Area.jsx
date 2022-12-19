@@ -38,13 +38,14 @@ function Area(props) {
       <div className="available-area">
      
         
-          <div role="button" onClick={add} onKeyDown={onKeyDown} tabIndex={props.tabIndex}>
+          <div>
           <h3>{props.area.area}</h3>
           <p>
             {" "}
             {props.area.available} spot available out of {props.area.spots}
           </p>
           </div>
+          <button onClick={add}>Choose</button>
         
      
         </div>

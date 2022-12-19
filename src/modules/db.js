@@ -1,7 +1,7 @@
-export function insertOrder(payload) {
+export async function insertOrder(payload) {
     const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94dnhlZ3ZmcGpqemV0ZmVwamF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzAzMTY4MTUsImV4cCI6MTk4NTg5MjgxNX0.NFD02g3DqaTae1gvjzYbO3yoqM3jwl_ppVHWx24GRaE'
     const url = 'https://oxvxegvfpjjzetfepjau.supabase.co'
-        fetch(url + "/rest/v1/ticket_orders", {
+        const res = await fetch(url + "/rest/v1/ticket_orders", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -10,7 +10,6 @@ export function insertOrder(payload) {
         },
         body: JSON.stringify(payload)
       })
-      .then()
-      .then()
+      return await res.json();
 }
 

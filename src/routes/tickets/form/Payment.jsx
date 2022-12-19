@@ -2,21 +2,30 @@ import React from "react";
 import { useRef } from "react";
 import { insertOrder } from "../../../modules/db";
 import { sendID } from "../../../modules/send-id";
+import Timer from "./Timer";
 
 function Payment(props) {
-  const payload = { ...props.order, basket: props.cart };
+  const personalDetailsForm = useRef(null);
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault();
-    //insertOrder(payload);
-    //sendID({"id": props.reservationID});
-
+    const payload = { ...props.order,
+      basket: props.cart, 
+      name: personalDetailsForm.current.elements.name.value,
+     email: personalDetailsForm.current.elements.email.value,
+     address: personalDetailsForm.current.elements.address.value,
+     phone: personalDetailsForm.current.elements.phone.value,
+    };
+   
+    await insertOrder(payload);
+    await sendID({"id": props.reservationID});
     props.nextPage((oldPage) => oldPage + 1);
+    props.setExpiry(null);
   }
   return (
     <div>
       <h2>Payment details</h2>
-      <form onSubmit={submit}>
+      <form onSubmit={submit} ref={personalDetailsForm}>
         <div className="form-control">
           <label htmlFor="form-name">Full name</label>
           <input required type="text" name="name" id="form-name"></input>
@@ -30,7 +39,7 @@ function Payment(props) {
         </div>
         <div className="form-control">
           <label htmlFor="form-phone-number">Phone number</label>
-          <input required type="type" name="phone-number" id="form-phone-number"></input>
+          <input required type="type" name="phone" id="form-phone-number"></input>
         </div>
         <div className="form-control">
           <label htmlFor="form-address">Address</label>
@@ -48,6 +57,7 @@ function Payment(props) {
           <label htmlFor="form-phone-number">CVV</label>
           <input required type="type" name="cvv" id="form-cvv"></input>
         </div>
+    
 
         <button>Pay</button>
       </form>

@@ -35,7 +35,9 @@ function AreaDetails(props) {
 
   function getReservationData(payload) {
   
-    setReservation(payload)
+    setReservation(payload);
+
+    props.onReserve();
   }
 
 

@@ -14,6 +14,7 @@ const message2 = "1"
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlert, setIsAlert] = useState(false);
 
+
   const tentObjects = props.cart.filter(element => element.product === "tent");
 const people = tentObjects.forEach(item => item.amount * item.for);
 
@@ -23,6 +24,8 @@ const people = tentObjects.forEach(item => item.amount * item.for);
     isChecked ? props.removeFromCart(greenCamping) : props.addToCart(greenCamping);
     setIsChecked(!isChecked);
   };
+
+
 
   const handleClick = () => {
     if (props.ticketNumbers === 0) {
@@ -37,7 +40,10 @@ const people = tentObjects.forEach(item => item.amount * item.for);
       props.nextPage()
     }
 
+ 
 }
+
+
 
 
 
@@ -50,7 +56,7 @@ const people = tentObjects.forEach(item => item.amount * item.for);
         <Ticket key={product.id} removeFromCart={props.removeFromCart} cart={props.cart} product={product} addToCart={props.addToCart} addToOrder={props.addToOrder} order={props.order} setOrder={props.setOrder} />
       ))}
 
-      <h2>Camping</h2>
+      <h2>Tents</h2>
       {props.tents.map((product) => (
         <Tent key={product.id} removeFromCart={props.removeFromCart} product={product} addToCart={props.addToCart} addToOrder={props.addToOrder} cart={props.cart} order={props.order} setOrder={props.setOrder} />
       ))}
