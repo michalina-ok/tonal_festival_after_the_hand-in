@@ -16,30 +16,29 @@ function Form(props) {
   const [cart, setCart] = useState([{ id: "6", name: "Booking fee", type: "extra", amount: 1, price: 99 }]);
   const [areas, setAreas] = useState([]);
   const [ticketNumbers, setTicketNumbers] = useState(0);
+  const [placesInTents, setPlacesInTents] = useState(0);
   const [reservationID, setReservationID] = useState("");
   const [order, setOrder] = useState({
     area: "",
     visitors: [],
   });
   const [page, setPage] = useState(1);
-  const Ref = useRef(null);
-  const [placesInTents, setPlacesInTents] = useState(0);
-
-
+  const [expiry, setExpiry] = useState(null);
+  const countdown = useRef();
   const { tents } = tentsData;
   const { tickets } = ticketsData;
-const [expiry, setExpiry] = useState(null);
-const countdown = useRef()
 
-function onReserve(){
-  setExpiry(Date.now() + 300000)
-}
+  //TIMER
 
-function onReserveExpired() {
-  setExpiry(null);
-  alert("time passed")
-}
+  function onReserve() {
+    setExpiry(Date.now() + 300000);
+  }
 
+  function onReserveExpired() {
+    setExpiry(null);
+    setPage(1);
+    alert("The reservation for your order has fallen through. Please start again.");
+  }
 
   //FETCHING
 
@@ -52,6 +51,8 @@ function onReserveExpired() {
     }
     getData();
   }, [areas.available]);
+
+  //CART
 
   function addToCart(data) {
     if (data.product === "ticket") {
@@ -95,10 +96,12 @@ function onReserveExpired() {
     });
   }
 
+  //NAVIGATION
+
   function prevPage() {
     setPage((oldPage) => oldPage - 1);
   }
-  function nextPage(e) {
+  function nextPage() {
     setPage((oldPage) => oldPage + 1);
   }
 
@@ -108,45 +111,13 @@ function onReserveExpired() {
   return (
     <div className="Form">
       <h1>Tonal Festival</h1>
+      {expiry != null && <p>Time left to complete the reservation</p>}
       {expiry != null && <Countdown date={expiry} ref={countdown} onComplete={onReserveExpired} />}
-      {page === 1 ? (
-        <TicketsDetails
-          placesInTents={placesInTents}
-          removeFromCart={removeFromCart}
-          nextPage={nextPage}
-          setOrder={setOrder}
-          order={order}
-          addToCart={addToCart}
-          tents={tents}
-          tickets={tickets}
-          setTicketNumbers={setTicketNumbers}
-          ticketNumbers={ticketNumbers}
-          cart={cart}
-        />
-      ) : (
-        ""
-      )}
-      {page === 2 ? <VisitorsDetails prevPage={prevPage} nextPage={nextPage} setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} /> : ""}
-      {page === 3 ? (
-        <AreaDetails
-          prevPage={prevPage}
-          nextPage={nextPage}
-          setPage={setPage}
-          areas={areas}
-          order={order}
-          setOrder={setOrder}
-          addToCart={addToCart}
-          ticketNumbers={ticketNumbers}
-          reservationID={reservationID}
-          setReservationID={setReservationID}
-          onReserve={onReserve}
-
-        />
-      ) : (
-        ""
-      )}
-      {page === 4 ? <Review prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} /> : ""}
-      {page === 5 ? <Payment reservationID={reservationID} prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} setExpiry={setExpiry} /> : ""}
+      {page === 1 && <TicketsDetails placesInTents={placesInTents} removeFromCart={removeFromCart} nextPage={nextPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} ticketNumbers={ticketNumbers} cart={cart}/>}
+      {page === 2 && <VisitorsDetails prevPage={prevPage} nextPage={nextPage} setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} />}
+      {page === 3 && <AreaDetails prevPage={prevPage} nextPage={nextPage} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} onReserve={onReserve} />}
+      {page === 4 && <Review prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} />}
+      {page === 5 && <Payment reservationID={reservationID} prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} setExpiry={setExpiry} />}
       {page === 6 && <Success />}
     </div>
   );

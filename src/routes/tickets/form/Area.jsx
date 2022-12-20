@@ -1,65 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
 
 function Area(props) {
-
-
-
-  function add() {
+  function handleClick() {
     props.setOrder({
       ...props.order,
       area: props.area.area,
     });
 
-  //    props.setReservation({
-  //      ...props.reservation,
-  //      area: props.area.area,
-  //  })
-
-   props.getReservationData({area: props.area.area,
-   amount: props.ticketNumbers})
+    props.getReservationData({ area: props.area.area, amount: props.ticketNumbers });
   }
-
-  const onKeyDown = (event) => {
-    event.preventDefault();
-    if (event.key === 'Enter' || event.key === ' ') {
-      add();
-    }
-  }
-
-
 
   return (
     <div>
       <div className="main-stage"></div>
-    <div className="areas-container">
-      {props.area.available >= props.ticketNumbers && (
-      <div className="available-area">
-     
-        
-          <div>
-          <h3>{props.area.area}</h3>
-          <p>
-            {" "}
-            {props.area.available} spot available out of {props.area.spots}
-          </p>
+      <div className="areas-container">
+        {props.area.available >= props.ticketNumbers && (
+          <div className="available-area">
+            <div>
+              <h3>{props.area.area}</h3>
+            </div>
+            <button className={props.area.area === props.order.area ? "active" : "round"} onClick={handleClick}>
+              {props.area.area === props.order.area ? "✓" : "Choose"}
+            </button>
           </div>
-          <button onClick={add}>Choose</button>
-        
-     
-        </div>
-      )}
-      {props.area.available < props.ticketNumbers && (
-         <div className="unavailable-area">
-     
-         
-          <h3>{props.area.area}</h3>
-          <p>Sold out</p>
-        </div>
- 
-      )}
-    </div>
+        )}
+        {props.area.available < props.ticketNumbers && (
+          <div className="unavailable-area">
+            <h3>{props.area.area}</h3>
+            <p>Sold out</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

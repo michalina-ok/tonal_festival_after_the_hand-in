@@ -49,8 +49,8 @@ let i=1;
  
   return (
     <div className="AreaDetails">
+      <div role="form"  aria-label="Camping area information">
       <h2>Where would you like to stay?</h2>
-      <p>We’ve prepared 4 unique areas for you to stay in. Click on a selected arena to find out more information.</p>
       <div className="areas">
         {props.areas.map((area) => (
           <Area
@@ -73,9 +73,13 @@ let i=1;
           />
         ))}
       </div>
-      <button className="round" onClick={props.prevPage}>Go back</button>
+      </div>
       {isAlert && <Alert message={"Please choose an area"}/> }
+      <div className="buttons">
+      <button className="round" onClick={() => props.prevPage}>Go back</button>
+      
       <button className="round" onClick={handleClick} >Continue</button>
+      </div>
     </div>
   );
 }

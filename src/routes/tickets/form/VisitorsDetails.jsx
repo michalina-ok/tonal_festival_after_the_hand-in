@@ -1,19 +1,10 @@
 import React from "react";
 import { useRef } from "react";
-import { useState } from "react";
 import InputField from "./InputField";
 
 function VisitorsDetails(props) {
-  //   const handleFormChange = (index, event) => {
-  //     let data = [...inputFields];
-  //     data[index][event.target.name] = event.target.value;
-  // }
-
-  function handleClick(e) {
-    e.preventDefault();
-
-
-  }
+  let i = 0;
+  const theForm = useRef(null);
 
   function submit(e) {
     e.preventDefault();
@@ -25,30 +16,23 @@ function VisitorsDetails(props) {
     props.nextPage();
   }
 
-  let i = 0;
-  const theForm = useRef(null);
-
   return (
-    <div>
+    <div className="VisitorsDetails">
       <h2>Who's partying with us?</h2>
-      <p>The tickets are personal which means we need to know the name of each ticket holder. If you’d like to pass your ticket to someone else later on, please contact our customer service.</p>
+      <p>The tickets are personal therefore we need to know the name of each ticket holder. If you’d like to pass your ticket to someone else later on, please contact our customer service.</p>
       <form onSubmit={submit} ref={theForm}>
-        {[...Array(props.ticketNumbers)].map((index) => (
+        {[...Array(props.ticketNumbers)].map(() => (
           <InputField cart={props.cart} key={i++} number={i + 1} />
         ))}
-        <button className="round" onClick={props.prevPage}>
-          Go back
-        </button>
-        <button className="round">
-          Continue
-        </button>
+        <div className="buttons">
+          <button className="round" onClick={props.prevPage}>
+            Go back
+          </button>
+          <button className="round">Continue</button>
+        </div>
       </form>
     </div>
   );
 }
-
-/*
-isActive : bla bla
-*/
 
 export default VisitorsDetails;

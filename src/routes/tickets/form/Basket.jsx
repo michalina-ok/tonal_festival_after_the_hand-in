@@ -6,16 +6,14 @@ function Basket(props) {
     props.cart.forEach((item) => {
       total += item.amount * item.price;
     });
-    console.log(props.cart)
 
     return total;
   }
 
   return (
     <section className="Basket">
-     
+     <p className="cart">Cart</p>
       <ul>
-        {props.cart.length === 0 && <div>Cart is empty</div>}
         {props.cart.map((item) => (
           <li key={item.id}>
         {item.type === "extra" && <p>{item.name} x {item.price},-</p>}

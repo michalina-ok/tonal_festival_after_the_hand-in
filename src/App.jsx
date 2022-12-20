@@ -1,18 +1,13 @@
 import { useEffect, useState } from "react";
 import Hero from "./routes/tickets/Hero";
 import React from "react";
-import ReactDOM from "react-dom/client";
 import LineUp from "./routes/tickets/LineUp";
 import TicketSection from "./routes/tickets/TicketSection";
 import Footer from "./routes/tickets/Footer";
-import './index.scss'
+import "./index.scss";
 
-
-
-function App(props) {
-
+function App() {
   const [bands, setBands] = useState([]);
-
 
   useEffect(() => {
     async function getData() {
@@ -25,12 +20,9 @@ function App(props) {
 
   return (
     <div className="App">
-
       <Hero />
       <TicketSection />
       <LineUp bands={bands} />
-      <Footer />
- 
     </div>
   );
 }

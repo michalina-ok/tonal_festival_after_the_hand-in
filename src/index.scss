@@ -28,8 +28,7 @@ $white-colour: #f9faf7;
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+ 
   min-width: 320px;
   min-height: 100vh;
   background-color: $black-colour;
@@ -44,7 +43,6 @@ h3 {
   font-weight: 400;
 }
 
-
 h2 {
   font-size: 2.44rem;
   margin: 20px 0;
@@ -54,7 +52,13 @@ p {
   font-family: $font-body;
 }
 
-button.round {
+ul {
+  list-style-type: none;
+}
+
+
+
+.round {
   background-color: $black-colour;
   color: $white-colour;
   border-radius: 62px;
@@ -73,7 +77,8 @@ button.round {
   transition: 0.2s;
 }
 
-button:hover {
+button:hover,
+a:hover {
   background-color: $white-colour;
   color: $black-colour;
 }
@@ -87,16 +92,23 @@ button:hover {
 .Hero {
   height: 100vh;
   h1 {
-    font-size: 3em;
+    font-size: 3.5em;
     position: absolute;
     left: 10vw;
-    bottom: 50vh;
+    bottom: 40vh;
     text-transform: uppercase;
+    margin-left: 10px;
+    span {
+      display: block;
+    }
   }
-  button {
+  a {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    bottom: 100px;
+    right: 10vw;
+  }
+  div.main-line-container {
+    padding-top: 10vh;
   }
   div.tickets {
     font-size: 1.5rem;
@@ -104,10 +116,11 @@ button:hover {
     text-transform: uppercase;
     position: absolute;
     bottom: 0;
-    width: 100vw;
     border-top: 3px $white-colour solid;
     border-bottom: 3px $white-colour solid;
     white-space: nowrap;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
   div.line {
     width: 85%;
@@ -123,19 +136,59 @@ button:hover {
     gap: 3px;
     margin: 5px 0;
   }
-
-
 }
 .TicketSection {
   display: flex;
   flex-direction: column;
-  h2 {
-    text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  a {
+    color: $white-colour;
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin-top: 40px;
+    border-radius: 62px;
+    box-shadow: 0 0 12px 4px $green-colour;
+    transition: 0.2s;
   }
-  div.tickets-info {
-    background-color: $white-colour;
+
+  a:hover {
     color: $black-colour;
+  }
+
+  div.ticket-cards {
+    display: grid;
+    gap: 40px;
     width: 80%;
+  }
+
+  div.ticket-card {
+    color: $white-colour;
+    background-color: rgb(188, 226, 6, 10%);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 2rem;
+
+    .header-ticket-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px rgba(188, 226, 6, 0.6) solid;
+      padding-bottom: 10px;
+    }
+    h3 {
+      font-size: 2.44rem;
+    }
+    p.price {
+      font-size: 1.25rem;
+    }
+    p {
+      margin-top: 20px;
+      font-size: 1rem;
+    }
   }
   button {
     align-self: center;
@@ -144,23 +197,66 @@ button:hover {
 
 .LineUp {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
   p {
-    font-size: 3.05em;
+    font-size: 2.44em;
     text-transform: uppercase;
+    //background-color: $white-colour;
+    color: $white-colour;
+    padding: 10px;
+    border-radius: 5px;
+    width: 80%;
+    background-color: rgb(188, 226, 6, 15%);
   }
-
+  div.lineup-header {
+    font-size: 1.5rem;
+    padding: 5px;
+    text-transform: uppercase;
+    border-top: 3px $white-colour solid;
+    border-bottom: 3px $white-colour solid;
+    white-space: nowrap;
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin-bottom: 40px;
+  }
 }
 
+.Footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  line-height: 1.4;
+  padding: 20px 0;
+  background-color: rgb(188, 226, 6, 10%);
+  .links {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+  }
+  p5-text {
+    display: none;
+  }
+  a {
+    color: $white-colour;
+  }
+  a:hover {
+    color: $black-colour;
+  }
+}
 
 //FORM
 
 .Form {
+  min-height: 80vh;
+
   h1 {
     font-size: 3.81rem;
-      background: linear-gradient( rgba(188, 226, 6, 0.6),rgba(0, 0, 0, 0.2));
-      width: 100vw;
-      padding: 20px 0 40px 0;
-    
+    margin: 20px 0 40px 0;
+    text-align: center;
+    color: $green-colour;
   }
 }
 
@@ -171,19 +267,42 @@ button:hover {
   box-shadow: 0 0 12px 4px $white-colour;
   margin: 20px;
   font-size: 1.44rem;
+  padding: 20px;
+  li {
+    list-style-type: none;
+    margin: 10px 0;
+    border-bottom: 1px black solid;
+  }
+  p.cart {
+    text-transform: uppercase;
+    font-weight: bolder;
+  }
 }
 
 .TicketsDetails {
   display: flex;
   flex-direction: column;
   margin: 0 40px;
+
+
   div.ticket-item {
     display: flex;
+    align-items: center;
     gap: 20px;
     border: 1px $white-colour solid;
     padding: 10px;
+    justify-content: space-between;
   }
+
+  div.amount-selection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
   button.plus-minus {
+    display: flex;
+    align-items: center;
     background-color: $white-colour;
     color: $black-colour;
     border: 1px $white-colour solid;
@@ -198,61 +317,204 @@ button:hover {
     cursor: pointer;
     transition: 0.2s;
   }
+
+  button.round {
+    margin: 20px;
+    align-self: flex-end;
+  }
+
+  input {
+    margin: 20px;
+  }
+
+  label {
+    margin-left: 20px;
+    color: $green-colour;
+  }
 }
-.AreaDetails {
-  .areas{
-    display: flex;
+
+.VisitorsDetails {
+  display: flex;
   flex-direction: column;
-  gap: 10px;
-}
+  margin: 0 40px;
 
-.unavailable-area {
-  background-color: red;
-
-}
-  .available-area {
-    background-color: $white-colour;
-    color: $black-colour;
+  justify-content: space-around;
+  .input-guest {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .buttons {
     display: flex;
-    cursor: pointer;
+    justify-content: space-between;
+    align-self: flex-end;
+  }
+}
+
+.AreaDetails {
+  align-items: center;
+  margin: 0 40px;
+
+  .areas {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 80%;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
   }
 
-  .available-area:hover {
-    background-color: $green-colour;
+  .unavailable-area {
+    background-color: red;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      border-bottom: 2px $white-colour solid;
+      font-size: 1.95em;
+    }
   }
+  .available-area {
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $white-colour;
+    color: $white-colour;
+    display: flex;
+    background-color: rgb(188, 226, 6, 10%);
+    h3 {
+      border-bottom: 2px $green-colour solid;
+      font-size: 1.95rem;
+      margin: 1rem;
+    }
+    button {
+      background-color: $white-colour;
+      color: $black-colour;
+      border-radius: 62px;
+      box-shadow: none;
+      border: none;
+      max-inline-size: 120px;
+      padding: 0.64rem;
+      font-weight: 300;
+      display: flex;
+      justify-content: center;
+      font-family: $font-body;
+      font-size: 0.8rem;
+      text-decoration: none;
+      cursor: pointer;
+      width: 90px;
+      transition: 0.2s;
+      margin: 20px;
+    }
 
-
- 
-
+    button.active {
+      background-color: $green-colour;
+    }
 
   
+
+    // button:active {
+    //   background-color: white;
+    //   color: $black-colour;
+    // }
+  }
 }
+
+
 
 .Alert {
   background-color: rgb(225, 0, 0, 0.8);
   border: 1px red solid;
   padding: 10px;
   margin: 10px;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
+.Review {
+  margin: 0 40px;
+  display: flex;
+  flex-direction: column;
 
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  p,
+  li {
+    margin: 20px;
+    font-size: 1.56rem;
   }
-  a:hover {
-    color: #747bff;
+  h3 {
+    text-transform: uppercase;
+    font-size: 1.95rem;
+    border-bottom: 2px $green-colour solid;
   }
-  // button {
-  //   background-color: #f9f9f9;
-  // }
+  .card {
+    background-color: rgb(188, 226, 6, 10%);
+    padding: 1rem;
+  }
+  button {
+    align-self: flex-end;
+  }
 }
 
+.Payment {
+  margin: 0 40px;
+  display: flex;
+  flex-direction: column;
 
+  form {
+    width: 75%;
+  }
+  input,
+  textarea {
+    width: 100%;
+    margin: 10px 0;
+  }
 
+  button {
+    align-self: flex-end;
+  }
+}
 
+.Success {
+  margin: 0 40px;
+}
 
+@media only screen and (min-width: 768px) {
+  .Hero {
+    a {
+      position: absolute;
+      top: 25px;
+      right: 10vw;
+      bottom: auto;
+    }
+  }
 
+  .TicketSection {
+    justify-content: center;
+
+    div.ticket-cards {
+      display: grid;
+      gap: 80px;
+      width: 60%;
+    }
+  }
+
+  .Footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .links {
+      justify-content: flex-end;
+      gap: 20px;
+    }
+  }
+
+  .Form {
+    margin: 0 auto;
+    background-color:rgb(188, 226, 6, 10%);
+    width: 60%;
+  }
+
+}

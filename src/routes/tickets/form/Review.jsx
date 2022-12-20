@@ -12,22 +12,31 @@ function Review(props) {
     return total;
   }
   return (
-    <div>
+    <div className="Review">
       <h2>Please review your order</h2>
+      <div className="card">
+      <h3>Your products</h3>
+      <ul>
       {props.cart.map((item) => (
         <li key={item.id}>
           {item.name} {item.amount}x {item.price},-
         </li>
+       
       ))}
-      <p>You have chosen {props.order.area} area</p>
-      <p>Visitors:</p>
+       </ul>
+     
+  
+       <h3>Your area</h3>
+      <p>{props.order.area}</p>
+      <h3>Visitors</h3>
       {props.order.visitors.map((item, index) => (
         <p key={index}>{item}</p>
       ))}
+        </div>
 
-      <p>YOUR TOTAL: {getTotal()} </p>
+      <p>YOUR TOTAL: {getTotal()} DKK </p>
 
-      <button onClick={props.nextPage}>Looks good, let's pay!</button>
+      <button className="round" onClick={props.nextPage}>Continue</button>
     </div>
   );
 }

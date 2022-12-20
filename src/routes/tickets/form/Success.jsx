@@ -2,13 +2,11 @@ import React from 'react'
 
 function Success() {
   return (
-    <div>
-      <h2>Made it</h2>
-      <p>We'll see you in 45 days</p>
+    <div className="Success">
+      <h2>Order received</h2>
+      <h3>We can't wait to party with you soon</h3>
       <p>And in the meantime check our app here</p>
-      <button>Get the app</button>
-
-      <p>The tickets have been sent to the following e-mail adress:</p>
+      <button className="round">Get the app</button>
     </div>
   )
 }

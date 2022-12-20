@@ -6,7 +6,7 @@ function Ticket(props) {
   }
 
   function remove() {
-    props.removeFromCart(props.product)
+    props.removeFromCart(props.product);
   }
   return (
     <div>
@@ -15,6 +15,7 @@ function Ticket(props) {
         <div className="ticket-item">
           <p>{props.product.name}</p>
           <p>{props.product.price} DKK</p>{" "}
+          <div className="amount-selection">
           <button className="plus-minus" onClick={remove}>
             -
           </button>
@@ -22,6 +23,7 @@ function Ticket(props) {
           <button className="plus-minus" onClick={add}>
             +
           </button>
+          </div>
         </div>
       </article>
     </div>

@@ -23,7 +23,7 @@ function Payment(props) {
     props.setExpiry(null);
   }
   return (
-    <div>
+    <div className="Payment">
       <h2>Payment details</h2>
       <form onSubmit={submit} ref={personalDetailsForm}>
         <div className="form-control">
@@ -35,7 +35,7 @@ function Payment(props) {
           <label htmlFor="form-email">E-mail</label>
 
           <input required type="email" name="email" id="form-email"></input>
-          <p>We will send the tickets to this e-mail adress</p>
+
         </div>
         <div className="form-control">
           <label htmlFor="form-phone-number">Phone number</label>
@@ -59,7 +59,7 @@ function Payment(props) {
         </div>
     
 
-        <button>Pay</button>
+        <button className="round">Pay</button>
       </form>
     </div>
   );
