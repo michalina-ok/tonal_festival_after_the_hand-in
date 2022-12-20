@@ -11,7 +11,8 @@ function App() {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch("http://localhost:8080/bands");
+      const url2="https://tonal-fest.fly.dev/"
+      const res = await fetch(url2 + "/bands");
       const data = await res.json();
       setBands(data);
     }

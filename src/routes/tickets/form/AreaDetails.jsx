@@ -23,7 +23,8 @@ function AreaDetails(props) {
   }, [props.areas.available]);
 
   function insertReservation(payload) {
-    fetch("http://localhost:8080/reserve-spot/", {
+    const url2="https://tonal-fest.fly.dev/"
+    fetch(url2+"/reserve-spot/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
