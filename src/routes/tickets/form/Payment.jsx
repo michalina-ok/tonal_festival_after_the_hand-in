@@ -46,15 +46,15 @@ function Payment(props) {
         </div>
         <div className="form-control">
           <label htmlFor="form-card-number">Card number</label>
-          <input  required type="type" name="card-number" id="form-card-number"></input>
+          <input  required type="type" name="card-number" id="form-card-number" placeholder="1234 1234 1234 1234"></input>
         </div>
         <div className="form-control">
           <label htmlFor="form-phone-number">Expiry date</label>
-          <input required type="type" name="expiry-date" id="form-expiry-date"></input>
+          <input required type="type" name="expiry-date" id="form-expiry-date" placeholder="02/25"></input>
         </div>
         <div className="form-control">
           <label htmlFor="form-phone-number">CVV</label>
-          <input required type="type" name="cvv" id="form-cvv"></input>
+          <input required type="type" name="cvv" id="form-cvv" placeholder="345"></input>
         </div>
     
 

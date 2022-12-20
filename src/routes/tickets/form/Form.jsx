@@ -105,9 +105,9 @@ function Form(props) {
       {page === 6 && <Success />}
       <div className="timer">
       {expiry != null && <p>Time left to complete the reservation</p>}
-      {expiry != null && <Countdown date={expiry} ref={countdown} onComplete={onReserveExpired} />}
+      {expiry != null && <Countdown date={expiry} 
+      ref={countdown} onComplete={onReserveExpired} />}
       </div>
- 
     </div>
   );
 }
