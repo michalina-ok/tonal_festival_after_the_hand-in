@@ -1,8 +1,6 @@
 import React from "react";
-import Timer from "./Timer";
 
 function Review(props) {
-  console.log(props.cart);
   function getTotal() {
     let total = 0;
     props.cart.forEach((item) => {

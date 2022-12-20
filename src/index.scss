@@ -251,7 +251,7 @@ a:hover {
 //FORM
 
 .Form {
-  min-height: 80vh;
+  min-height: 90vh;
   margin: 0 auto;
   background-color:rgb(188, 226, 6, 10%);
 
@@ -483,7 +483,7 @@ margin: 30px 20px;
 
 
   form {
-    width: 75%;
+    width: 90%;
     display: flex;
     flex-direction: column;
   }
@@ -505,13 +505,19 @@ margin: 30px 20px;
   flex-direction: column;
   align-items: center;
   background-color: rgb(188, 226, 6, 10%);
-  padding: 10px;
+  padding: 20px;
   text-align:center;
   h3,h4 {
-    margin-top: 40px;
+    margin-top: 20px;
   }
-  button {
-    margin: 40px;
+ a {
+   margin-top: 40px;
+ }
+  .app-cta {
+margin-top: 80px;
+display: flex;
+flex-direction: column;
+align-items: center;
   }
 }
 
@@ -519,7 +525,8 @@ margin: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 40px;
+  padding-bottom: 40px;
   p {
     font-size: 1.5em;
     margin-bottom: 10px;
@@ -569,6 +576,11 @@ margin: 30px 20px;
  }
  h2{
    font-size: 2.44rem;
+ }
+ .Payment {
+   form {
+     width: 75%;
+   }
  }
   }
 

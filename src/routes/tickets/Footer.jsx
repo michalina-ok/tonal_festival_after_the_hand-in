@@ -7,7 +7,7 @@ function Footer() {
   };
 
   const draw = (p5) => {
-    p5.background(0,0,0);
+    p5.background(0, 0, 0);
     p5.text("Tonal Festival", 30, 50);
     p5.textSize(50);
     p5.noFill();
@@ -15,12 +15,9 @@ function Footer() {
     p5.textStyle(p5.BOLD);
   };
 
-
   return (
     <div className="Footer">
-      
-      
-        <div className="links">
+      <div className="links">
         <div>
           <p>Tonal Festival</p>
           <p>Vesterbrogade 189</p>
@@ -28,7 +25,7 @@ function Footer() {
         </div>
         <div>
           <p>hello@tonal.com</p>
-          <a href="">Get the app</a>
+          <a href="https://tonal-festival-app.netlify.app/">Get the app</a>
         </div>
       </div>
       <Sketch className="p5-text" draw={draw} setup={setup} />

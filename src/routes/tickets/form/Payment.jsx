@@ -2,7 +2,6 @@ import React from "react";
 import { useRef } from "react";
 import { insertOrder } from "../../../modules/db";
 import { sendID } from "../../../modules/send-id";
-import Timer from "./Timer";
 
 function Payment(props) {
   const personalDetailsForm = useRef(null);
