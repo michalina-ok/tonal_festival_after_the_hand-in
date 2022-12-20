@@ -1,6 +1,6 @@
 export function insertReservation(payload) {
   const url1="http://localhost:8080";
-  const url2="https://tonal-fest.fly.dev/"
+  const url2="https://tonal-fest.fly.dev"
         fetch(url2 + "/reserve-spot/", {
         method: 'PUT',
         headers: {

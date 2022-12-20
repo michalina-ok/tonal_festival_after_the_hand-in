@@ -14,7 +14,7 @@ function AreaDetails(props) {
 
   useEffect(() => {
     async function getData() {
-      const url = "http://localhost:8080";
+      const url = "https://tonal-fest.fly.dev";
       const res = await fetch(url + "/available-spots/");
       const data = await res.json();
       props.setAreas(data);
@@ -23,7 +23,7 @@ function AreaDetails(props) {
   }, [props.areas.available]);
 
   function insertReservation(payload) {
-    const url2="https://tonal-fest.fly.dev/"
+    const url2="https://tonal-fest.fly.dev"
     fetch(url2+"/reserve-spot/", {
       method: "PUT",
       headers: {
