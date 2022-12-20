@@ -7,7 +7,6 @@ function Area(props) {
       area: props.area.area,
     });
 
-    props.getReservationData({ area: props.area.area, amount: props.ticketNumbers });
   }
 
   return (

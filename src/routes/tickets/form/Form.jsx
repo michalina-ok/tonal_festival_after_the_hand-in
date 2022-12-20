@@ -40,18 +40,6 @@ function Form(props) {
     alert("The reservation for your order has fallen through. Please start again.");
   }
 
-  //FETCHING
-
-  useEffect(() => {
-    async function getData() {
-      const url = "http://localhost:8080";
-      const res = await fetch(url + "/available-spots/");
-      const data = await res.json();
-      setAreas(data);
-    }
-    getData();
-  }, [areas.available]);
-
   //CART
 
   function addToCart(data) {
@@ -111,14 +99,17 @@ function Form(props) {
   return (
     <div className="Form">
       <h1>Tonal Festival</h1>
+      <div className="timer">
       {expiry != null && <p>Time left to complete the reservation</p>}
       {expiry != null && <Countdown date={expiry} ref={countdown} onComplete={onReserveExpired} />}
+      </div>
       {page === 1 && <TicketsDetails placesInTents={placesInTents} removeFromCart={removeFromCart} nextPage={nextPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} ticketNumbers={ticketNumbers} cart={cart}/>}
       {page === 2 && <VisitorsDetails prevPage={prevPage} nextPage={nextPage} setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} />}
-      {page === 3 && <AreaDetails prevPage={prevPage} nextPage={nextPage} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} onReserve={onReserve} />}
+      {page === 3 && <AreaDetails setAreas={setAreas} prevPage={prevPage} nextPage={nextPage} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} onReserve={onReserve} />}
       {page === 4 && <Review prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} />}
       {page === 5 && <Payment reservationID={reservationID} prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} setExpiry={setExpiry} />}
       {page === 6 && <Success />}
+ 
     </div>
   );
 }

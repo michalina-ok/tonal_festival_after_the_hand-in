@@ -33,19 +33,19 @@ function TicketsDetails(props) {
     <div className="TicketsDetails">
       <div role="form"  aria-label="Tickets and tents information">
       <h2>Tickets</h2>
-      <p>Both tickets are 7-day passes</p>
+      <h3>Both tickets are 7-day passes</h3>
       {props.tickets.map((product) => (
         <Ticket key={product.id} removeFromCart={props.removeFromCart} cart={props.cart} product={product} addToCart={props.addToCart} addToOrder={props.addToOrder} order={props.order} setOrder={props.setOrder} />
       ))}
       <h2>Tents</h2>
-      <p>You can bring your own tent for free or rent one from us and have it set up for you</p>
+      <h3>You can bring your own tent for free or rent one from us and have it set up for you</h3>
       {props.tents.map((product) => (
         <Tent key={product.id} removeFromCart={props.removeFromCart} product={product} addToCart={props.addToCart} addToOrder={props.addToOrder} cart={props.cart} order={props.order} setOrder={props.setOrder} />
       ))}
       <label htmlFor="form-green-camping">
-        Green camping
+        Green camping</label>
         <input type="checkbox" id="form-green-camping" name="green-camping" onChange={handleChange}></input>
-      </label>
+    
       </div>
 
       <Basket cart={props.cart} setOrder={props.setOrder} order={props.order} />

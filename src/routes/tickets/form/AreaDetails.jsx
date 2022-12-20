@@ -10,10 +10,24 @@ function AreaDetails(props) {
   const [isAlert, setIsAlert] = useState(false)
 
 
+  //FETCHING
+
+  useEffect(() => {
+    async function getData() {
+      const url = "http://localhost:8080";
+      const res = await fetch(url + "/available-spots/");
+      const data = await res.json();
+      props.setAreas(data);
+    }
+    getData();
+  }, [props.areas.available]);
+
+
   function handleClick() {
 
     //insertReservation(reservation);
     props.order.area.length ?  props.nextPage()  : handleAlert();
+    getReservationData({ area: props.order.area, amount: props.ticketNumbers });
   }
 
   function handleAlert() {
@@ -72,14 +86,15 @@ let i=1;
         
           />
         ))}
-      </div>
+       </div>
       </div>
       {isAlert && <Alert message={"Please choose an area"}/> }
       <div className="buttons">
-      <button className="round" onClick={() => props.prevPage}>Go back</button>
+      <button className="round" onClick={props.prevPage}>Go back</button>
       
       <button className="round" onClick={handleClick} >Continue</button>
       </div>
+     
     </div>
   );
 }
