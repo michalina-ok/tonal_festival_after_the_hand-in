@@ -22,18 +22,6 @@ function AreaDetails(props) {
     getData();
   }, [props.areas.available]);
 
-
-  function handleClick() {
-
-    //insertReservation(reservation);
-    props.order.area.length ?  props.nextPage()  : handleAlert();
-    getReservationData({ area: props.order.area, amount: props.ticketNumbers });
-  }
-
-  function handleAlert() {
-    setIsAlert(true);
-  }
-
   function insertReservation(payload) {
     fetch("http://localhost:8080/reserve-spot/", {
       method: "PUT",
@@ -45,15 +33,31 @@ function AreaDetails(props) {
       .then((response) => response.json())
       .then((response) => props.setReservationID(response.id))
       .catch((err) => console.error(err));
+    
   }
 
-  function getReservationData(payload) {
-  
-    setReservation(payload);
+
+  function handleClick() {
+
+   
+    const reservation = {area: props.order.area, amount: props.ticketNumbers};
+    console.log(reservation)
+     insertReservation(reservation);
+    props.order.area.length ?  props.nextPage()  : handleAlert();
 
     props.onReserve();
   }
 
+  function handleAlert() {
+    setIsAlert(true);
+  }
+
+
+
+
+
+ 
+  
 
 
   
@@ -78,7 +82,7 @@ let i=1;
             reservationID={props.reservationID}
             setReservationID={props.setReservationID}
             insertReservation={insertReservation}
-            getReservationData={getReservationData}
+            //getReservationData={getReservationData}
             setReservation={setReservation}
             tabIndex={i++}
            
