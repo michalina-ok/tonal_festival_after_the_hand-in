@@ -3,7 +3,7 @@ import { useState } from "react";
 import Ticket from "./Ticket";
 import Basket from "./Basket";
 import Tent from "./Tent";
-import Alert from "./Alert";
+import Alert from "../Alert";
 
 function TicketsDetails(props) {
   const [isChecked, setIsChecked] = useState(false);

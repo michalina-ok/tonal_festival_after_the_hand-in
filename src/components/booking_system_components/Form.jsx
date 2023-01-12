@@ -3,12 +3,12 @@ import { useState, useRef, useEffect } from "react";
 import TicketsDetails from "./TicketsDetails";
 import AreaDetails from "./AreaDetails";
 import Success from "./Success";
-import VisitorsDetails from "./VisitorsDetails";
-import Payment from "./Payment";
-import Review from "./Review";
+import VisitorsDetails from "./step_2_visitors/VisitorsDetails";
+import Payment from "./step_5_payment/Payment";
+import Review from "./step_4_review/Review";
 
-import ticketsData from "../../ticketsData";
-import tentsData from "../../tentsData";
+import ticketsData from "../../products_data/ticketsData";
+import tentsData from "../../products_data/tentsData";
 
 import Countdown from "react-countdown";
 import { insertOrder } from "../../modules/db";

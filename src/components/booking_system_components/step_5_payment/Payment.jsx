@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
-import { insertOrder } from "../../modules/db";
-import { sendID } from "../../modules/send-id";
+import { insertOrder } from "../../../modules/db";
+import { sendID } from "../../../modules/send-id";
 
 function Payment(props) {
   const personalDetailsForm = useRef(null);

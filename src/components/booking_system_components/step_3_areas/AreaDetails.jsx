@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 
 import Area from "./Area";
-import Alert from "./Alert";
+import Alert from "../Alert";
 
 function AreaDetails(props) {
   const [reservation, setReservation] = useState({});
