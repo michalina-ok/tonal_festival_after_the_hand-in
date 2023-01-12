@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 function TicketSection() {
@@ -12,6 +11,7 @@ function TicketSection() {
             <p className="price">799 DKK</p>
           </div>
           <p>7-day pass including a spot on our camping site</p>
+          <Link to="/form">Buy tickets</Link>
         </div>
         <div className="ticket-card">
           <div className="header-ticket-card">
@@ -19,9 +19,9 @@ function TicketSection() {
             <p className="price">1299 DKK</p>
           </div>
           <p>7-day pass including a spot on our camping site and access to exclusive VIP-only events</p>
+          <Link to="/form">Buy tickets</Link>
         </div>
       </div>
-      <Link to="/form">Buy tickets here</Link>
     </div>
   );
 }

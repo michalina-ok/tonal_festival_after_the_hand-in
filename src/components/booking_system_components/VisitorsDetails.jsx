@@ -1,5 +1,5 @@
-import React from "react";
 import { useRef } from "react";
+
 import InputField from "./InputField";
 
 function VisitorsDetails(props) {

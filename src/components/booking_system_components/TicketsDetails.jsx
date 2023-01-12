@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 import Ticket from "./Ticket";
 import Basket from "./Basket";
 import Tent from "./Tent";

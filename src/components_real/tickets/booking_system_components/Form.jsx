@@ -1,15 +1,19 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
-import { insertOrder } from "../../../modules/db";
+
+
 import TicketsDetails from "./TicketsDetails";
 import AreaDetails from "./AreaDetails";
 import Success from "./Success";
 import VisitorsDetails from "./VisitorsDetails";
-import ticketsData from "../../../ticketsData";
-import tentsData from "../../../tentsData";
 import Payment from "./Payment";
 import Review from "./Review";
+
+import ticketsData from "../../ticketsData";
+import tentsData from "../../tentsData";
+
 import Countdown from "react-countdown";
+import { insertOrder } from "../../modules/db";
 
 function Form(props) {
   // USE STATES

@@ -1,7 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Area from "./Area";
 import { useState, useRef, useEffect } from "react";
+
+import Area from "./Area";
 import Alert from "./Alert";
 
 function AreaDetails(props) {

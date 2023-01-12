@@ -1,5 +1,3 @@
-import React from "react";
-
 function Review(props) {
   function getTotal() {
     let total = 0;

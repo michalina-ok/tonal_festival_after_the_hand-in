@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import Hero from "./routes/tickets/Hero";
-import React from "react";
-import LineUp from "./routes/tickets/LineUp";
-import TicketSection from "./routes/tickets/TicketSection";
-import Footer from "./routes/tickets/Footer";
+
+import Hero from "./components/landing_page_components/Hero";
+import LineUp from "./components/landing_page_components/LineUp";
+import TicketSection from "./components/landing_page_components/TicketSection";
+import Footer from "./components/landing_page_components/Footer";
+
 import "./index.scss";
 
 function App() {

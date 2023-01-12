@@ -1,7 +1,7 @@
-import React from "react";
 import { useRef } from "react";
-import { insertOrder } from "../../../modules/db";
-import { sendID } from "../../../modules/send-id";
+
+import { insertOrder } from "../../modules/db";
+import { sendID } from "../../modules/send-id";
 
 function Payment(props) {
   const personalDetailsForm = useRef(null);
@@ -32,7 +32,6 @@ function Payment(props) {
 
         <div className="form-control">
           <label htmlFor="form-email">E-mail</label>
-
           <input required type="email" name="email" id="form-email"></input>
 
         </div>

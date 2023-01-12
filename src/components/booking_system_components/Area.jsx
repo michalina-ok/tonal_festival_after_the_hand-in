@@ -1,5 +1,3 @@
-import React from "react";
-
 function Area(props) {
   function handleClick() {
     props.setOrder({

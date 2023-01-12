@@ -1,5 +1,3 @@
-import React from "react";
-
 function Basket(props) {
   function getTotal() {
     let total = 0;

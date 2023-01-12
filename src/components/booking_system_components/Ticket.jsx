@@ -1,5 +1,3 @@
-import React from "react";
-
 function Ticket(props) {
   function add() {
     props.addToCart(props.product);

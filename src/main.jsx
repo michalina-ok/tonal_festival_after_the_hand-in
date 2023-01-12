@@ -4,7 +4,7 @@ import App from "./App";
 import "./index.scss";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import ErrorPage from "./error-page";
-import Form from "./routes/tickets/form/Form";
+import Form from "./components/booking_system_components/Form";
 
 const router = createBrowserRouter([
   {

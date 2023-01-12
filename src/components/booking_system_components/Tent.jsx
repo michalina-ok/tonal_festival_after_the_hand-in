@@ -1,5 +1,3 @@
-import React from "react";
-
 function Tent(props) {
   function add() {
     props.addToCart(props.product);
