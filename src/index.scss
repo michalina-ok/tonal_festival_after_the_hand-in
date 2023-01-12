@@ -461,10 +461,10 @@ a:hover {
   padding: 2px 5px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;  
-  float: right;
   cursor: pointer;
+  align-self: flex-end;
+  float: right;
   }
 }
 
