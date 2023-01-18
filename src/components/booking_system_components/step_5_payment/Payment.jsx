@@ -53,7 +53,7 @@ function Payment(props) {
         </div>
         <div className="form-control">
           <label htmlFor="form-card-number">Card number</label>
-          <input required type="text" name="card-number" id="form-card-number" placeholder="Card number" pattern="[0-9]{4}\s*"></input>
+          <input required type="text" name="card-number" id="form-card-number" placeholder="Card number" pattern="[0-9]{4}\s*" title="Please enter your credit card number in the folllowing format: xxxx xxxx xxxx xxxx"></input>
         </div>
         <div className="card-details">
         <div className="form-control">
