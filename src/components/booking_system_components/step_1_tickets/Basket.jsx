@@ -15,8 +15,8 @@ function Basket(props) {
         {props.cart.map((item) => (
           <li key={item.id}>
         {item.type === "extra" && <p>{item.name} x {item.price},-</p>}
-        {item.type != "extra" && item.product != "ticket" && <p>{item.amount} {item.product[0].toUpperCase() + item.product.slice(1,4)}{props.placesInTents > 3 ? 's' : ''} for {item.for} people x {item.price},-</p>}
-        {item.type != "extra" && item.product === "ticket" && <p>{item.amount} {item.name}{props.ticketNumbers > 2 ? 's' : ''} x {item.price},-</p>}
+        {item.type != "extra" && item.product != "ticket" && <p>{item.amount} {item.name} x {item.price},-</p>}
+        {item.type != "extra" && item.product === "ticket" && <p>{item.amount} {item.name}(s) x {item.price},-</p>}
           </li>
         ))}
       </ul>
