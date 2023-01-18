@@ -491,7 +491,6 @@ a:hover {
     font-size: 1.56rem;
   }
   h3 {
-    text-transform: uppercase;
     font-size: 1.95rem;
     border-bottom: 2px $green-colour solid;
   }
@@ -566,7 +565,7 @@ a:hover {
 
   div.card-information, div.personal-information {
     background-color: $dark-green;
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
     min-width: 50vw;
     margin: 0 auto;
   }
