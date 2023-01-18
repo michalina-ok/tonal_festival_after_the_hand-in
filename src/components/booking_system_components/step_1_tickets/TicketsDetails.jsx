@@ -9,7 +9,7 @@ function TicketsDetails(props) {
   const [isChecked, setIsChecked] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [isAlert, setIsAlert] = useState(false);
-  const [isAlertShown, setIsAlertShown] = useState(true)
+  
 
   //CHECKBOX
   const handleChange = () => {
@@ -19,15 +19,14 @@ function TicketsDetails(props) {
   };
 
   const handleClick = () => {
+    props.setIsAlertShown(true);
     if (props.ticketNumbers === 0) {
       setIsAlert(true);
-      setIsAlertShown(true);
       setAlertMessage("Please add tickets");
     } else if (props.placesInTents === 0 && props.ticketNumbers > 0) {
       props.nextPage();
     } else if (props.ticketNumbers != props.placesInTents) {
       setIsAlert(true);
-      setIsAlertShown(true);
       setAlertMessage("Your number of tent spaces does not match the number of guests");
     } else {
       props.nextPage();
@@ -51,8 +50,8 @@ function TicketsDetails(props) {
         <input type="checkbox" id="form-green-camping" name="green-camping" onChange={handleChange}></input>
       </div>
 
-      <Basket cart={props.cart} setOrder={props.setOrder} order={props.order} />
-      {isAlert && <Alert message={alertMessage} isAlertShown={isAlertShown} setIsAlertShown={setIsAlertShown}/>}
+      <Basket cart={props.cart} setOrder={props.setOrder} order={props.order} ticketNumbers={props.ticketNumbers} placesInTents={props.placesInTents} />
+      {isAlert && <Alert message={alertMessage} isAlertShown={props.isAlertShown} setIsAlertShown={props.setIsAlertShown}/>}
       <button className="round" onClick={handleClick}>
         Continue
       </button>

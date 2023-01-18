@@ -23,6 +23,7 @@ function Form(props) {
     area: "",
     visitors: [],
   });
+  const [isAlertShown, setIsAlertShown] = useState(true)
   const [page, setPage] = useState(1);
   const [expiry, setExpiry] = useState(null);
   const countdown = useRef();
@@ -98,9 +99,9 @@ function Form(props) {
   return (
     <div className="Form">
       <h1>Tonal Festival</h1>
-      {page === 1 && <TicketsDetails placesInTents={placesInTents} removeFromCart={removeFromCart} nextPage={nextPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} ticketNumbers={ticketNumbers} cart={cart}/>}
+      {page === 1 && <TicketsDetails setIsAlertShown={setIsAlertShown} isAlertShown={isAlertShown} placesInTents={placesInTents} removeFromCart={removeFromCart} nextPage={nextPage} setOrder={setOrder} order={order} addToCart={addToCart} tents={tents} tickets={tickets} setTicketNumbers={setTicketNumbers} ticketNumbers={ticketNumbers} cart={cart}/>}
       {page === 2 && <VisitorsDetails prevPage={prevPage} nextPage={nextPage} setOrder={setOrder} order={order} ticketNumbers={ticketNumbers} cart={cart} />}
-      {page === 3 && <AreaDetails setAreas={setAreas} prevPage={prevPage} nextPage={nextPage} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} onReserve={onReserve} />}
+      {page === 3 && <AreaDetails setIsAlertShown={setIsAlertShown} isAlertShown={isAlertShown} setAreas={setAreas} prevPage={prevPage} nextPage={nextPage} setPage={setPage} areas={areas} order={order} setOrder={setOrder} addToCart={addToCart} ticketNumbers={ticketNumbers} reservationID={reservationID} setReservationID={setReservationID} onReserve={onReserve} />}
       {page === 4 && <Review prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} />}
       {page === 5 && <Payment reservationID={reservationID} prevPage={prevPage} nextPage={nextPage} cart={cart} order={order} setExpiry={setExpiry} />}
       {page === 6 && <Success />}

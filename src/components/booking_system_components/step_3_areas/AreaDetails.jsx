@@ -39,11 +39,14 @@ function AreaDetails(props) {
     const reservation = { area: props.order.area, amount: props.ticketNumbers };
     insertReservation(reservation);
     props.order.area.length ? props.nextPage() : handleAlert();
+    if (props.order.area.length) {
+    props.onReserve()
+    }
 
-    props.onReserve();
   }
 
   function handleAlert() {
+    props.setIsAlertShown(true)
     setIsAlert(true);
   }
 
@@ -72,7 +75,7 @@ function AreaDetails(props) {
           ))}
         </div>
       </div>
-      {isAlert && <Alert message={"Please choose an area"} />}
+      {isAlert && <Alert message={"Please choose an area"} isAlertShown={props.isAlertShown} setIsAlertShown={props.setIsAlertShown} />}
       <div className="buttons">
         <button className="round" onClick={props.prevPage}>
           Go back

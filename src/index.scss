@@ -56,6 +56,10 @@ ul {
   list-style-type: none;
 }
 
+input[type="text"], input[type="email"], textarea {
+  padding: 4px 6px 4px 6px;
+}
+
 input[type=checkbox] {
   accent-color: #bce206;
 }
@@ -367,6 +371,9 @@ a:hover {
   label {
     margin-right: 10px;
   }
+  input[type="text"] {
+    width: 250px;
+    }
   .buttons {
     display: flex;
     justify-content: space-between;
@@ -498,20 +505,75 @@ a:hover {
 }
 
 .Payment {
-  margin: 0 40px;
+  margin: 0 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   form {
-    width: 90%;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   input,
   textarea {
-    width: 100%;
+    margin: 8px 0;
+  }
+
+  div.form-control {
     margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2 {
+    border-bottom: 2px $green-colour solid;
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+  input[name="name"] {
+    width: 250px;
+  }
+
+  input[name="email"] {
+    width: 250px;
+  }
+
+  input[name="phone"] {
+    width: 150px;
+  }
+
+  textarea[name="address"] {
+    width: 250px;
+  }
+
+  input[name="cardholder-name"] {
+    width: 250px;
+  }
+
+  input[name="card-number"] {
+    width: 150px;
+  }
+
+  input[name="expiry-date"] {
+    width: 50px;
+  }
+
+  input[name="cvv"] {
+    width: 50px;
+  }
+
+  div.card-information, div.personal-information {
+    background-color: $dark-green;
+    padding: 2rem;
+    min-width: 50vw;
+    margin: 0 auto;
+  }
+
+  div.card-details {
+    display: flex;
+    gap: 20px;
   }
 
   button {
@@ -547,8 +609,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
-  padding-bottom: 40px;
+  margin: 20px;
+  padding: 5px;
   p {
     font-size: 1.5em;
     margin-bottom: 10px;
@@ -566,9 +628,9 @@ a:hover {
   }
 
   .TicketSection {
-    justify-content: center;
     a {
-      font-size: 1.5em;
+      font-size: 1em;
+      margin-top: 40px;
     }
 
     div.ticket-cards {
@@ -591,17 +653,12 @@ a:hover {
     margin: 20px auto;
     min-height: 90vh;
     background-color: $dark-green;
-    width: 60%;
+    width: 80%;
     h1 {
       font-size: 3.81rem;
     }
     h2 {
       font-size: 2.44rem;
-    }
-    .Payment {
-      form {
-        width: 75%;
-      }
     }
   }
 }
