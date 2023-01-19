@@ -1,7 +1,7 @@
 export async function sendID(payload) {
   const url1="http://localhost:8080" 
   const url2="https://tonal-fest.fly.dev"     
-  const res = await fetch(url1 + "/fullfill-reservation", {
+  const res = await fetch(url2 + "/fullfill-reservation", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

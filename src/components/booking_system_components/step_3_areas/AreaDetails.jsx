@@ -13,7 +13,7 @@ function AreaDetails(props) {
     async function getData() {
       const url1 = "http://localhost:8080";
       const url2 = "https://tonal-fest.fly.dev";
-      const res = await fetch(url1 + "/available-spots/");
+      const res = await fetch(url2 + "/available-spots/");
       const data = await res.json();
       props.setAreas(data);
     }
@@ -23,7 +23,7 @@ function AreaDetails(props) {
   function insertReservation(payload) {
     const url1 = "http://localhost:8080";
     const url2 = "https://tonal-fest.fly.dev";
-    fetch(url1 + "/reserve-spot/", {
+    fetch(url2 + "/reserve-spot/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

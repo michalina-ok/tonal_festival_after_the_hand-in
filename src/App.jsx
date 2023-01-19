@@ -14,7 +14,7 @@ function App() {
     async function getData() {
       const url1="http://localhost:8080" 
       const url2="https://tonal-fest.fly.dev"  
-      const res = await fetch(url1 + "/bands");
+      const res = await fetch(url2 + "/bands");
       const data = await res.json();
       setBands(data);
     }
